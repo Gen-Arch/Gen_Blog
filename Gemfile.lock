@@ -16,7 +16,9 @@ GEM
     rack (2.0.5)
     rack-protection (2.0.3)
       rack
+    rdiscount (2.2.0.1)
     redcarpet (3.4.0)
+    rouge (3.2.0)
     sinatra (2.0.3)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -39,7 +41,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  rdiscount
   redcarpet
+  rouge
   sinatra
   sinatra-contrib
 

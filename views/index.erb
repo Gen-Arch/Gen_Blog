@@ -11,6 +11,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="/highlight.css" type="text/css" />
 
     <!-- Custom styles for this template -->
     <link href="jumbotron.css" rel="stylesheet">
@@ -73,18 +74,16 @@
             <div class="blog-post">
               <h2 class="blog-post-title">Sample blog post</h2>
               <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
-              aaa
+              <pre class="highlight ruby">
+                <%= markdown(:Arch_install) %>
+              </pre>
             </div><!-- /.blog-post -->
 
-            <h3 class="pb-3 mb-4 font-italic border-bottom">
-              test
-            </h3>
-
+            <h3 class="pb-3 mb-4 font-italic border-bottom"></h3>
             <nav class="blog-pagination">
               <a class="btn btn-outline-primary" href="#">Older</a>
               <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
             </nav>
-
           </div><!-- /.blog-main -->
 
           <aside class="col-md-4 blog-sidebar">
