@@ -1,0 +1,2286 @@
+# Logfile created on 2018-08-18 01:07:24 +0900 by logger.rb/61378
+I, [2018-08-18T01:07:28.421237 #31210]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code>a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:07:28.421888 #31210]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code>a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+I, [2018-08-18T01:10:15.174903 #31390]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code>a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:10:15.175944 #31390]  WARN -- : #<Nokogiri::HTML::Document:0x2b127b4cf974 name="document" children=[#<Nokogiri::XML::DTD:0x2b127b4cf2a8 name="html">, #<Nokogiri::XML::Element:0x2b127b4ce664 name="html" children=[#<Nokogiri::XML::Element:0x2b127b4ce218 name="body" children=[#<Nokogiri::XML::Element:0x2b127b4c79a4 name="h1" children=[#<Nokogiri::XML::Text:0x2b127b4c6dec "Ruby Array">]>, #<Nokogiri::XML::Text:0x2b127b4c616c "\n\n">, #<Nokogiri::XML::Element:0x2b127b4bdda0 name="hr">, #<Nokogiri::XML::Text:0x2b127b4bda44 "\n\n">, #<Nokogiri::XML::Element:0x2b127b4bd968 name="p" children=[#<Nokogiri::XML::Text:0x2b127b4bd490 "配列の代入方法を備忘録として記述">]>, #<Nokogiri::XML::Text:0x2b127b4bd210 "\n\n">, #<Nokogiri::XML::Element:0x2b127b4bd134 name="h4" children=[#<Nokogiri::XML::Text:0x2b127b4bce8c "特定の値の抽出">]>, #<Nokogiri::XML::Text:0x2b127b4bcc98 "\n\n">, #<Nokogiri::XML::Element:0x2b127b4bcbbc name="pre" children=[#<Nokogiri::XML::Element:0x2b127b4bc950 name="code" attributes=[#<Nokogiri::XML::Attr:0x2b127b4bc8b0 name="class" value="Ruby">] children=[#<Nokogiri::XML::Text:0x2b127b4bc34c "a = [\"aaa\", \"bbb\", \"ccc\"]\nary1 = a.select { |t| t =~ /aaa/ }\nary2 = a - ary1\n">]>]>, #<Nokogiri::XML::Text:0x2b127b4bd918 "\n\n">, #<Nokogiri::XML::Element:0x2b127b4b9ad4 name="p" children=[#<Nokogiri::XML::Text:0x2b127b4b8f80 "よくなった">]>, #<Nokogiri::XML::Text:0x2b127b4b8814 "\n\n">, #<Nokogiri::XML::Element:0x2b127b4b85f8 name="pre" children=[#<Nokogiri::XML::Element:0x2b127b4b7d38 name="code" children=[#<Nokogiri::XML::Text:0x2b127b4ab7f4 "a = [\"aaa\", \"bbb\", \"ccc\"]\nary1,ary2 = a.partition { |t| t =~ /aaa/ }\n">]>]>, #<Nokogiri::XML::Text:0x2b127b4ab010 "\n\n">, #<Nokogiri::XML::Element:0x2b127b4aaed0 name="p" children=[#<Nokogiri::XML::Text:0x2b127b4aac00 "よき">]>, #<Nokogiri::XML::Text:0x2b127b4a041c "\n">]>]>]>
+I, [2018-08-18T01:11:50.863101 #31390]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code>a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:11:50.863483 #31390]  WARN -- : #<Nokogiri::HTML::Document:0x3fda303ae70c name="document" children=[#<Nokogiri::XML::DTD:0x3fda303ae4f0 name="html">, #<Nokogiri::XML::Element:0x3fda303ae248 name="html" children=[#<Nokogiri::XML::Element:0x3fda303ae090 name="body" children=[#<Nokogiri::XML::Element:0x3fda303b3eb4 name="h1" children=[#<Nokogiri::XML::Text:0x3fda303b3cfc "Ruby Array">]>, #<Nokogiri::XML::Text:0x3fda303b3b58 "\n\n">, #<Nokogiri::XML::Element:0x3fda303b3aa4 name="hr">, #<Nokogiri::XML::Text:0x3fda303b38d8 "\n\n">, #<Nokogiri::XML::Element:0x3fda303b3824 name="p" children=[#<Nokogiri::XML::Text:0x3fda303b366c "配列の代入方法を備忘録として記述">]>, #<Nokogiri::XML::Text:0x3fda303b34c8 "\n\n">, #<Nokogiri::XML::Element:0x3fda303b3414 name="h4" children=[#<Nokogiri::XML::Text:0x3fda303b325c "特定の値の抽出">]>, #<Nokogiri::XML::Text:0x3fda303b30b8 "\n\n">, #<Nokogiri::XML::Element:0x3fda303b3004 name="pre" children=[#<Nokogiri::XML::Element:0x3fda303b2e4c name="code" attributes=[#<Nokogiri::XML::Attr:0x3fda303b2de8 name="class" value="Ruby">] children=[#<Nokogiri::XML::Text:0x3fda303b29c4 "a = [\"aaa\", \"bbb\", \"ccc\"]\nary1 = a.select { |t| t =~ /aaa/ }\nary2 = a - ary1\n">]>]>, #<Nokogiri::XML::Text:0x3fda303b2730 "\n\n">, #<Nokogiri::XML::Element:0x3fda303b267c name="p" children=[#<Nokogiri::XML::Text:0x3fda303b24c4 "よくなった">]>, #<Nokogiri::XML::Text:0x3fda303b2320 "\n\n">, #<Nokogiri::XML::Element:0x3fda303b226c name="pre" children=[#<Nokogiri::XML::Element:0x3fda303b20b4 name="code" children=[#<Nokogiri::XML::Text:0x3fda303b7ec4 "a = [\"aaa\", \"bbb\", \"ccc\"]\nary1,ary2 = a.partition { |t| t =~ /aaa/ }\n">]>]>, #<Nokogiri::XML::Text:0x3fda303b7c30 "\n\n">, #<Nokogiri::XML::Element:0x3fda303b7b7c name="p" children=[#<Nokogiri::XML::Text:0x3fda303b79c4 "よき">]>, #<Nokogiri::XML::Text:0x3fda303b7820 "\n">]>]>]>
+I, [2018-08-18T01:13:42.894806 #31496]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code>a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:13:42.895695 #31496]  WARN -- : #<Nokogiri::HTML::Document:0x2b28a0219b90 name="document" children=[#<Nokogiri::XML::DTD:0x2b28a0219370 name="html">, #<Nokogiri::XML::Element:0x2b28a02189d4 name="html" children=[#<Nokogiri::XML::Element:0x2b28a0218434 name="body" children=[#<Nokogiri::XML::Element:0x2b28a0211dc8 name="h1" children=[#<Nokogiri::XML::Text:0x2b28a02114b8 "Ruby Array">]>, #<Nokogiri::XML::Text:0x2b28a021084c "\n\n">, #<Nokogiri::XML::Element:0x2b28a021016c name="hr">, #<Nokogiri::XML::Text:0x2b28a0207af8 "\n\n">, #<Nokogiri::XML::Element:0x2b28a0207a44 name="p" children=[#<Nokogiri::XML::Text:0x2b28a02075a8 "配列の代入方法を備忘録として記述">]>, #<Nokogiri::XML::Text:0x2b28a0207328 "\n\n">, #<Nokogiri::XML::Element:0x2b28a0207210 name="h4" children=[#<Nokogiri::XML::Text:0x2b28a0206f68 "特定の値の抽出">]>, #<Nokogiri::XML::Text:0x2b28a0206d60 "\n\n">, #<Nokogiri::XML::Element:0x2b28a0206c98 name="pre" children=[#<Nokogiri::XML::Element:0x2b28a0206a68 name="code" attributes=[#<Nokogiri::XML::Attr:0x2b28a02069c8 name="class" value="Ruby">] children=[#<Nokogiri::XML::Text:0x2b28a0206414 "a = [\"aaa\", \"bbb\", \"ccc\"]\nary1 = a.select { |t| t =~ /aaa/ }\nary2 = a - ary1\n">]>]>, #<Nokogiri::XML::Text:0x2b28a02060e0 "\n\n">, #<Nokogiri::XML::Element:0x2b28a0207918 name="p" children=[#<Nokogiri::XML::Text:0x2b28a02032f0 "よくなった">]>, #<Nokogiri::XML::Text:0x2b28a0202be8 "\n\n">, #<Nokogiri::XML::Element:0x2b28a0202814 name="pre" children=[#<Nokogiri::XML::Element:0x2b28a0201e64 name="code" children=[#<Nokogiri::XML::Text:0x2b28a0201bd0 "a = [\"aaa\", \"bbb\", \"ccc\"]\nary1,ary2 = a.partition { |t| t =~ /aaa/ }\n">]>]>, #<Nokogiri::XML::Text:0x2b28a01f518c "\n\n">, #<Nokogiri::XML::Element:0x2b28a01f5010 name="p" children=[#<Nokogiri::XML::Text:0x2b28a01f4d54 "よき">]>, #<Nokogiri::XML::Text:0x2b28a01f49f8 "\n">]>]>]>
+I, [2018-08-18T01:14:00.247285 #31542]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code>a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:14:00.247864 #31542]  WARN -- : #<Nokogiri::HTML::Document:0x2b17b9e4e82c name="document" children=[#<Nokogiri::XML::DTD:0x2b17b9e4e174 name="html">, #<Nokogiri::XML::Element:0x2b17b9e499bc name="html" children=[#<Nokogiri::XML::Element:0x2b17b9e49778 name="body" children=[#<Nokogiri::XML::Element:0x2b17b9e4946c name="h1" children=[#<Nokogiri::XML::Text:0x2b17b9e49160 "Ruby Array">]>, #<Nokogiri::XML::Text:0x2b17b9e48f1c "\n\n">, #<Nokogiri::XML::Element:0x2b17b9e48c38 name="hr">, #<Nokogiri::XML::Text:0x2b17b9e48544 "\n\n">, #<Nokogiri::XML::Element:0x2b17b9e480f8 name="p" children=[#<Nokogiri::XML::Text:0x2b17b9e41e60 "配列の代入方法を備忘録として記述">]>, #<Nokogiri::XML::Text:0x2b17b9e41b40 "\n\n">, #<Nokogiri::XML::Element:0x2b17b9e41a14 name="h4" children=[#<Nokogiri::XML::Text:0x2b17b9e41780 "特定の値の抽出">]>, #<Nokogiri::XML::Text:0x2b17b9e41370 "\n\n">, #<Nokogiri::XML::Element:0x2b17b9e41258 name="pre" children=[#<Nokogiri::XML::Element:0x2b17b9e40600 name="code" attributes=[#<Nokogiri::XML::Attr:0x2b17b9e4054c name="class" value="Ruby">] children=[#<Nokogiri::XML::Text:0x2b17b9e3b998 "a = [\"aaa\", \"bbb\", \"ccc\"]\nary1 = a.select { |t| t =~ /aaa/ }\nary2 = a - ary1\n">]>]>, #<Nokogiri::XML::Text:0x2b17b9e3adb8 "\n\n">, #<Nokogiri::XML::Element:0x2b17b9e3ac50 name="p" children=[#<Nokogiri::XML::Text:0x2b17b9e3a7a0 "よくなった">]>, #<Nokogiri::XML::Text:0x2b17b9e3a458 "\n\n">, #<Nokogiri::XML::Element:0x2b17b9e3a32c name="pre" children=[#<Nokogiri::XML::Element:0x2b17b9e21ed0 name="code" children=[#<Nokogiri::XML::Text:0x2b17b9e21bd8 "a = [\"aaa\", \"bbb\", \"ccc\"]\nary1,ary2 = a.partition { |t| t =~ /aaa/ }\n">]>]>, #<Nokogiri::XML::Text:0x2b17b9e216ec "\n\n">, #<Nokogiri::XML::Element:0x2b17b9e215ac name="p" children=[#<Nokogiri::XML::Text:0x2b17b9e21278 "よき">]>, #<Nokogiri::XML::Text:0x2b17b9e20eb8 "\n">]>]>]>
+I, [2018-08-18T01:15:22.552356 #31597]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code>a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+I, [2018-08-18T01:15:40.038580 #31640]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code>a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+I, [2018-08-18T01:18:54.269620 #31640]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code>a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+I, [2018-08-18T01:19:14.367521 #31694]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code>a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:19:14.735456 #31694]  WARN -- : <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span>a = ["aaa", "bbb", "ccc"]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+</body></html>
+
+I, [2018-08-18T01:20:12.431429 #31694]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code>a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:20:12.779667 #31694]  WARN -- : <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span>a = ["aaa", "bbb", "ccc"]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+</body></html>
+
+I, [2018-08-18T01:26:46.048125 #31778]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code>a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+I, [2018-08-18T01:27:52.720421 #31849]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code>a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:27:53.069688 #31849]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span>a = ["aaa", "bbb", "ccc"]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:30:47.651605 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code>a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:30:48.011596 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span>a = ["aaa", "bbb", "ccc"]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:31:32.580635 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code>a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:31:32.932936 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span>a = ["aaa", "bbb", "ccc"]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:33:00.345123 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby:aaa">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+I, [2018-08-18T01:33:09.431504 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:33:09.688146 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:34:55.140484 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:34:55.397957 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:35:39.937600 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:35:40.194323 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:36:28.735700 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:36:28.992486 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:36:44.223901 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:36:44.482489 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:36:55.264221 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:36:55.521172 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:37:12.895228 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:37:13.152108 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:37:24.128107 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:37:24.385657 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:38:16.845693 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:38:17.103134 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:39:03.266328 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:39:03.524050 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:39:29.532544 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:39:29.790694 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:39:41.084353 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:39:41.343600 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:40:30.684147 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:40:30.941179 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:40:53.531701 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:40:53.789011 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:42:02.639205 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:42:02.896482 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:43:24.080235 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:43:24.337074 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:44:35.882974 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:44:36.141060 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:44:41.704415 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:44:41.962756 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:44:55.750691 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:44:56.007255 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:46:50.332225 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:46:50.589873 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:48:58.471739 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:48:58.729735 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:49:09.737552 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:49:09.994260 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:51:03.567300 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:51:03.825627 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:51:11.906368 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:51:12.165281 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:52:46.261199 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:52:46.520529 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:53:34.831830 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:53:35.089077 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:54:15.132810 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:54:15.389826 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:54:34.622803 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:54:34.880109 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:54:55.805025 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:54:56.063043 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:55:41.869167 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:55:42.127895 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:55:46.209579 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:55:46.467028 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:56:20.764296 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:56:21.020976 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:56:31.325131 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:56:31.584326 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:56:51.194317 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:56:51.451677 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:57:34.554752 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:57:34.811868 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:58:25.048914 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby:通常">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+
+ary1 = []
+ary2 = []
+a.each do |t|
+  case s
+  when /aaa/
+      ary1 &lt;&lt; t
+  else
+      ary2 &lt;&lt; t
+  end
+end
+</code></pre>
+
+<pre><code class=":結果">ary1 #=&gt; aaa
+ary2 #=&gt; bbb, ccc
+</code></pre>
+
+<p>長い・・・</p>
+
+<pre><code class="Ruby:select">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby:partition">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+
+</code></pre>
+
+<p>よき</p>
+
+I, [2018-08-18T01:58:58.217728 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+
+ary1 = []
+ary2 = []
+a.each do |t|
+  case s
+  when /aaa/
+      ary1 &lt;&lt; t
+  else
+      ary2 &lt;&lt; t
+  end
+end
+</code></pre>
+
+<pre><code class="Ruby">ary1 #=&gt; aaa
+ary2 #=&gt; bbb, ccc
+</code></pre>
+
+<p>長い・・・</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:58:58.479282 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+
+<span class="n">ary1</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+  <span class="k">case</span> <span class="n">s</span>
+  <span class="k">when</span> <span class="sr">/aaa/</span>
+      <span class="n">ary1</span> <span class="o">&lt;&lt;</span> <span class="n">t</span>
+  <span class="k">else</span>
+      <span class="n">ary2</span> <span class="o">&lt;&lt;</span> <span class="n">t</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="n">ary1</span> <span class="c1">#=&gt; aaa</span>
+<span class="n">ary2</span> <span class="c1">#=&gt; bbb, ccc</span>
+</pre></div>
+
+<p>&#38263;&#12356;&#12539;&#12539;&#12539;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T01:59:56.939870 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+
+ary1 = []
+ary2 = []
+a.each do |t|
+  case s
+  when /aaa/
+      ary1 &lt;&lt; t
+  else
+      ary2 &lt;&lt; t
+  end
+end
+</code></pre>
+
+<pre><code class="Ruby">ary1 #=&gt; aaa
+ary2 #=&gt; bbb, ccc
+</code></pre>
+
+<p>長い・・・</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T01:59:57.205919 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+
+<span class="n">ary1</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+  <span class="k">case</span> <span class="n">s</span>
+  <span class="k">when</span> <span class="sr">/aaa/</span>
+      <span class="n">ary1</span> <span class="o">&lt;&lt;</span> <span class="n">t</span>
+  <span class="k">else</span>
+      <span class="n">ary2</span> <span class="o">&lt;&lt;</span> <span class="n">t</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+
+<div class="highlight"><pre><span></span><span class="n">ary1</span> <span class="c1">#=&gt; aaa</span>
+<span class="n">ary2</span> <span class="c1">#=&gt; bbb, ccc</span>
+</pre></div>
+
+<p>&#38263;&#12356;&#12539;&#12539;&#12539;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T02:00:35.642323 #31911]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+
+ary1 = []
+ary2 = []
+a.each do |t|
+  case s
+  when /aaa/
+      ary1 &lt;&lt; t
+  else
+      ary2 &lt;&lt; t
+  end
+end
+
+ary1 #=&gt; aaa
+ary2 #=&gt; bbb, ccc
+</code></pre>
+
+<p>長い・・・</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T02:00:35.903811 #31911]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+
+<span class="n">ary1</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+  <span class="k">case</span> <span class="n">s</span>
+  <span class="k">when</span> <span class="sr">/aaa/</span>
+      <span class="n">ary1</span> <span class="o">&lt;&lt;</span> <span class="n">t</span>
+  <span class="k">else</span>
+      <span class="n">ary2</span> <span class="o">&lt;&lt;</span> <span class="n">t</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">ary1</span> <span class="c1">#=&gt; aaa</span>
+<span class="n">ary2</span> <span class="c1">#=&gt; bbb, ccc</span>
+</pre></div>
+
+<p>&#38263;&#12356;&#12539;&#12539;&#12539;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-18T02:01:35.014238 #32475]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+
+ary1 = []
+ary2 = []
+a.each do |t|
+  case s
+  when /aaa/
+      ary1 &lt;&lt; t
+  else
+      ary2 &lt;&lt; t
+  end
+end
+
+ary1 #=&gt; aaa
+ary2 #=&gt; bbb, ccc
+</code></pre>
+
+<p>長い・・・</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-18T02:01:35.276601 #32475]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+
+<span class="n">ary1</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+  <span class="k">case</span> <span class="n">s</span>
+  <span class="k">when</span> <span class="sr">/aaa/</span>
+      <span class="n">ary1</span> <span class="o">&lt;&lt;</span> <span class="n">t</span>
+  <span class="k">else</span>
+      <span class="n">ary2</span> <span class="o">&lt;&lt;</span> <span class="n">t</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">ary1</span> <span class="c1">#=&gt; aaa</span>
+<span class="n">ary2</span> <span class="c1">#=&gt; bbb, ccc</span>
+</pre></div>
+
+<p>&#38263;&#12356;&#12539;&#12539;&#12539;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+

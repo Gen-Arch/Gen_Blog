@@ -11,7 +11,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-      <link rel="stylesheet" href="/highlight.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="css/pygments.css" />
 
     <!-- Custom styles for this template -->
     <link href="jumbotron.css" rel="stylesheet">
@@ -30,13 +30,13 @@
           <li class="nav-item active">
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item  active">
             <a class="nav-link" href="#">Link</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/">disabel</a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown  active">
             <a class="nav-link dropdown-toggle" href="/" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Develop Tool</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
               <a class="dropdown-item" href="http://gen-server.wjg.jp:3000">Gogs</a>
@@ -44,9 +44,11 @@
             </div>
           </li>
         </ul>
+
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <button class="btn btn-outline-success mr-sm-2" type="submit">Search</button>
+          <a class="btn btn btn-primary mr-sm-0" href="/create" role="button">Create Page</a>
         </form>
       </div>
     </nav>
@@ -59,7 +61,6 @@
           <h1 class="display-3">GEN-BLOG</h1>
           <h2 class="display-4">～日々の備忘録～</h2>
           <p>Genの学んだ知識をつらつら書いてゆくサイト</p>
-          <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
         </div>
       </div>
 
@@ -67,16 +68,10 @@
         <!-- Example row of columns -->
         <div class="row">
           <div class="col-md-8 blog-main">
-            <h3 class="pb-3 mb-4 font-italic border-bottom">
-              From the Firehose
-            </h3>
-
             <div class="blog-post">
               <h2 class="blog-post-title">Sample blog post</h2>
-              <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
-              <pre class="highlight ruby">
-                <%= markdown(:Arch_install) %>
-              </pre>
+              <p class="blog-post-meta"> <%= Date.today %> <a href="#"><%= @test %></a></p>
+              <%= @md %>
             </div><!-- /.blog-post -->
 
             <h3 class="pb-3 mb-4 font-italic border-bottom"></h3>
@@ -122,6 +117,7 @@
               <ol class="list-unstyled">
                 <li><a href="https://github.com/Gen-Arch">GitHub</a></li>
                 <li><a href="https://twitter.com/">Twitter</a></li>
+                <li><a href="https://qiita.com/Gen_Arch">Qiita</a></li>
               </ol>
             </div>
           </aside><!-- /.blog-sidebar -->
