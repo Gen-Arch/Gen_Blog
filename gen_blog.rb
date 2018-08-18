@@ -4,6 +4,7 @@ require 'glorify'
 require 'erb'
 require 'logger'
 require "./helper/application_helper.rb"
+require "date"
 
 class GenApp < Sinatra::Base
     register Sinatra::Glorify
@@ -16,6 +17,8 @@ class GenApp < Sinatra::Base
     get '/' do
         @txt = File.open("#{File.dirname(__FILE__)}/md/Arch_install.md", "rb").read
         @md = markdown(@txt)
+        @title = "Ruby配列あれこれ"
+        @data = Date.today
         erb :index
     end
     
