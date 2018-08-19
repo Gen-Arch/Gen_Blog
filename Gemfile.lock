@@ -8,27 +8,14 @@ GEM
       tzinfo (~> 1.1)
     backports (3.11.3)
     concurrent-ruby (1.0.5)
-    glorify (0.5.0)
-      nokogiri
-      rdoc-rouge
-      sinatra
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
-    mini_portile2 (2.3.0)
     minitest (5.11.3)
     multi_json (1.13.1)
     mustermann (1.0.3)
-    nokogiri (1.8.4)
-      mini_portile2 (~> 2.3.0)
-    pygments.rb (1.2.1)
-      multi_json (>= 1.0.0)
     rack (2.0.5)
     rack-protection (2.0.3)
       rack
-    rdoc (4.3.0)
-    rdoc-rouge (0.1.0)
-      rdoc (~> 4.0)
-      rouge (~> 0.3.0)
     redcarpet (3.4.0)
     rouge (0.3.10)
       thor
@@ -55,10 +42,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  glorify
-  nokogiri
-  pygments.rb
   redcarpet
+  rouge
   sinatra
   sinatra-contrib
 

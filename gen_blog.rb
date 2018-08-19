@@ -1,13 +1,12 @@
+
 require 'sinatra/reloader'
 require 'sinatra/base'
-require 'glorify'
 require 'erb'
 require 'logger'
-require "./helper/application_helper.rb"
 require "date"
+require "./helper/application_helper.rb"
 
 class GenApp < Sinatra::Base
-    register Sinatra::Glorify
     register Sinatra::Reloader
     include ApplicationHelper
 
@@ -18,6 +17,7 @@ class GenApp < Sinatra::Base
     get '/' do
         @md_page = "Arch_install"
         @txt = File.open("#{File.dirname(__FILE__)}/md/#{@md_page}.md", "rb").read
+        @txt.force_encoding("utf-8")
         @md = markdown(@txt)
         @title = "Ruby配列あれこれ"
         @data = Date.today
@@ -26,6 +26,12 @@ class GenApp < Sinatra::Base
     
     get '/create' do
         erb :create
+    end
+
+    get '/highlight.css' do
+        #Rouge css
+        headers 'Content-Type' => 'text/css'
+        Rouge::Themes::Github.render(scope: '.highlight')
     end
 end
 
