@@ -6091,3 +6091,2754 @@ W, [2018-08-18T21:23:57.611690 #2472]  WARN -- : <h1>Ruby Array</h1>
 
 <p>&#12424;&#12365;</p>
 
+I, [2018-08-19T10:36:43.878464 #9397]  INFO -- : <p>#前置き</p>
+
+<p>自分がArchをインストールした際詰まった箇所を見直すためと<br>
+自分自身とても詰まったブート方式の違いについて（64bitUEFI・32bitUEFI・BIOS）<br>
+これからArchLinuxをインストールする方の力に少しでも力に慣れたらと思い記事を書かせていただきました。</p>
+
+<p>本文はブート方式ごとの設定を記述しており、各項目ごとに64bitUEFI・32bitUEFI・BIOSの設定があります。<br>
+自分の環境にあったものを選択してください。</p>
+
+<p>初投稿で文章力もないので読みづらい文書となっていますがご了承ください</p>
+
+<p>ArchLinuxをインストールする際<a href="https://wiki.archlinuxjp.org/index.php/%E3%83%93%E3%82%AE%E3%83%8A%E3%83%BC%E3%82%BA%E3%82%AC%E3%82%A4%E3%83%89#.E6.9C.80.E6.96.B0.E3.81.AE.E3.82.A4.E3.83.B3.E3.82.B9.E3.83.88.E3.83.BC.E3.83.AB.E3.83.A1.E3.83.87.E3.82.A3.E3.82.A2.E3.82.92.E6.BA.96.E5.82.99.E3.81.99.E3.82.8B">Archの公式wiki</a>のビギナーズガイドが優秀なのでこちらを見ながらの作業をおすすめします。</p>
+
+<p>#インストールディスクの作成<br>
+インストールディスクはUSBで作るほうが色々便利なのでUSBでの作り方のみ記述します。<br>
+PCのブート方式によって作成手順が違うので自分のPCのブート方式をよく調べてから作業してください。</p>
+
+<p><a href="https://wiki.archlinuxjp.org/index.php/USB_%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%83%A1%E3%83%87%E3%82%A3%E3%82%A2">USBインストールガイド</a><br>
+####64bitUEFI・BIOSブート<br>
+・<a href="https://www.archlinux.org/download/" title="Arch Linux Downloads">Arch Linux Downloads</a>からisoの入手<br>
+・ddコマンドか<a href="http://rufus.akeo.ie/">Rufus</a>を使いisoファイルを書き込む</p>
+
+<p>※/dev/sdx1 ではなく /dev/sdx を使い。x はあなたの使うデバイスに置き換える。</p>
+
+<pre><code class="ruby:ddコマンド">dd bs=4M if=/path/to/archlinux.iso of=/dev/sdx &amp;&amp; sync
+</code></pre>
+
+<p>####32bitUEFIブート<br>
+・<a href="https://www.archlinux.org/download/" title="Arch Linux Downloads">Arch Linux Downloads</a>からisoの入手<br>
+・<a href="http://rufus.akeo.ie/">Rufus</a>を使いisoファイルを書き込む　※USBラベルは「ARCHISO」に設定しておく<br>
+・<a href="https://github.com/jfwells/linux-asus-t100ta/blob/master/boot/bootia32.efi">bootia32</a>をダウンロードする<br>
+・書き込んだUSBのEFIディレクトリを開き、ダウンロードしたbootia32を配置<br>
+・/boot/grub/grub.cfgを作成し以下を記述　※ディレクトリがない場合は作成</p>
+
+<pre><code class="ruby:grub.cfg">menuentry &#39;Arch Linux i686&#39;{
+echo &#39;Loading Linux core repo kernel ...&#39;
+linux /arch/boot/i686/vmlinuz noefi nomodeset archisobasedir=arch archisolabel=ARCHISO
+echo &#39;Loading initial ramdisk ...&#39;
+initrd /arch/boot/i686/archiso.img
+}
+menuentry &#39;Arch Linux x86_64&#39;{
+echo &#39;Loading Linux core repo kernel ...&#39;
+linux /arch/boot/x86_64/vmlinuz noefi nomodeset archisobasedir=arch archisolabel=ARCHISO
+echo &#39;Loading initial ramdisk ...&#39;
+initrd /arch/boot/x86_64/archiso.img
+}
+</code></pre>
+
+<p>#インストール作業<br>
+USBの準備ができたらいよいよインストールに入ります。現在2015年10月29日に記事を作成していますが<br>
+年数が経つとインストール方法が変わったりする場合があるので<a href="https://wiki.archlinuxjp.org/index.php/%E3%83%93%E3%82%AE%E3%83%8A%E3%83%BC%E3%82%BA%E3%82%AC%E3%82%A4%E3%83%89">Archインストールガイド</a>をよくみながら作業をしてください。</p>
+
+<p>起動画面にてどちらのアーキテクチャか選択できるので、自分のPCにあったほうを選択してください。<br>
+Boot Arch Linux (x86_64)　<br>
+Boot Arch Linux (i386)　  ※32bitUEFIはこちらを選択</p>
+
+<p>##キーボードレイアウトの設定<br>
+Archが立ち上がったらデフォルトのキーレイアウトがUSになっているので変更</p>
+
+<pre><code class="ruby:">loadkeys jp106
+</code></pre>
+
+<p>##インターネットの設定<br>
+無線</p>
+
+<pre><code class="ruby:">wifi-menu
+</code></pre>
+
+<p>有線<br>
+自動接続</p>
+
+<p>※固定IPを設定する場合は下記参照<br>
+<a href="https://wiki.archlinuxjp.org/index.php/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E8%A8%AD%E5%AE%9A#.E5.9B.BA.E5.AE.9A_IP_.E3.82.A2.E3.83.89.E3.83.AC.E3.82.B9">ネットワーク設定</a></p>
+
+<p>##システムクロックの更新<br>
+systemd-timesyncd を使ってシステムクロックを設定</p>
+
+<pre><code class="ruby:">timedatectl set-ntp true
+</code></pre>
+
+<pre><code class="ruby:サービスの状態確認">timedatectl status
+</code></pre>
+
+<p>##パーティショニング<br>
+パーティニングにおいて必須なのは下記の二つ<br>
+・ルートディレクトリ / のパーティション。<br>
+・UEFI が有効になっている場合、EFI システムパーティション。<br>
+※詳細は<a href="https://wiki.archlinux.jp/index.php/%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0">パーティショニング</a>参照</p>
+
+<p>今回の構成<br>
+/dev/sda1  ・・・  /boot　<br>
+/dev/sda2  ・・・ swap　　<br>
+/dev/sda3 ・・・ /root　　<br>
+/dev/sda4 ・・・ /home　　</p>
+
+<p>※UEFIブートの場合、EFI System Partitionというものを作成しなければいけないのだが今回は/bootと統合して作成する</p>
+
+<p>####現在のパーティション確認</p>
+
+<pre><code class="ruby:">fdisk -l
+</code></pre>
+
+<p>####起動モードの確認<br>
+UEFIブートで立ち上がっているか確認できます。</p>
+
+<pre><code class="ruby:">ls /sys/firmware/efi/efivars
+</code></pre>
+
+<p>※ディレクトリが存在しない場合、BIOS (または CSM) モードで起動しています。</p>
+
+<p>####パーティション作成<br>
+partedの起動</p>
+
+<pre><code class="ruby:">parted /dev/sda
+</code></pre>
+
+<pre><code class="ruby:BIOSブートの場合">(parted)mklabel msdos
+(parted)mkpart primary ext4 1MiB 100MiB
+(parted)mkpart primary linux-swap 100MiB  2GiB
+(parted)mkpart primary ext4 2GiB 10GiB
+(parted)mkpart primary ext4 10GiB 100% 
+(parted)q
+</code></pre>
+
+<pre><code class="ruby:UEFIブートの場合">(parted)mklabel gpt
+(parted)mkpart ESP fat32 1MiB 513MiB
+(parted)mkpart primary linux-swap 513MiB  2.5GiB
+(parted)mkpart primary ext4 2.5GiB 10GiB
+(parted)mkpart primary ext4 10GiB 100%
+(parted)q 
+</code></pre>
+
+<p>※各パーティションのサイズは自分の環境に置き換えてください</p>
+
+<p>作成後、パーティションを確認したい場合は下記コマンド実行</p>
+
+<pre><code class="ruby:">fdisk -l
+</code></pre>
+
+<p>##ファイルシステム作成<br>
+ファイルシステムとスワップ領域の作成を行う</p>
+
+<pre><code class="ruby:BIOSブートの場合">mkfs.ext4 /dev/sda1
+mkswap /dev/sda2
+swapon /dev/sda2
+mkfs.ext4 /dev/sda3
+mkfs.ext4 /dev/sda4
+</code></pre>
+
+<p>UEFIの場合bootディレクトリはfat32で作成する</p>
+
+<pre><code class="ruby:UEFIブートの場合">mkfs.vfat -F32 /dev/sda1
+mkswap /dev/sda2
+swapon /dev/sda2
+mkfs.ext4 /dev/sda3
+mkfs.ext4 /dev/sda4
+</code></pre>
+
+<p>##インストール</p>
+
+<p>ベースシステムのインストールになります。<br>
+マウントしないとインストールができないので以下を実行</p>
+
+<p>####マウント<br>
+<code>ruby:<br>
+mount /dev/sda3 /mnt<br>
+mkdir /mnt/boot<br>
+mkdir /mnt/home<br>
+mount /dev/sda1 /mnt/boot<br>
+mount /dev/sda4 /mnt/home<br>
+</code></p>
+
+<p>####ミラーリスト選択</p>
+
+<pre><code class="ruby:">nano /etc/pacman.d/mirrorlist
+</code></pre>
+
+<pre><code class="ruby:">##
+## Arch Linux repository mirrorlist
+## Sorted by mirror score from mirror status page
+## Generated on YYYY-MM-DD
+##
+#japan
+Server = http://ftp.jaist.ac.jp/pub/Linux/ArchLinux/$repo/os/$arch
+...
+</code></pre>
+
+<p>・Ctrl+W で「japan」と入力しURLを検索<br>
+・Ctrl+K で Server 行を切り取り。<br>
+・PageUp キーで上にスクロール。<br>
+・Ctrl+U でリストの一番上にペースト。<br>
+・Ctrl+X で終了、保存するか聞かれたら、Y を押し Enter で上書き保存。</p>
+
+<p>####ベースシステムインストール</p>
+
+<pre><code class="ruby:">pacstrap /mnt base base-devel
+</code></pre>
+
+<p>####fstab作成</p>
+
+<pre><code class="ruby:">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+</code></pre>
+
+<p>##システムの設定<br>
+インストールが完了したらいよいよそのシステムに入ります。</p>
+
+<pre><code class="ruby:">arch-chroot /mnt /bin/bash
+</code></pre>
+
+<p>####ロケールの設定<br>
+locale.gen ファイルのコメントアウトを解除します</p>
+
+<pre><code class="rudy:">nano /etc/locale.gen
+</code></pre>
+
+<pre><code class="rudy:locale.gen">...
+#en_SG ISO-8859-1
+en_US.UTF-8 UTF-8
+#en_US ISO-8859-1
+...
+#ja_JP.EUC-JP EUC-JP
+ja_JP.UTF-8 UTF-8
+#ka_GE.UTF-8 UTF-8
+...
+</code></pre>
+
+<p>解除後、以下を実行</p>
+
+<pre><code class="ruby:">locale-gen
+echo LANG=en_US.UTF-8 &gt; /etc/locale.conf
+</code></pre>
+
+<p>####コンソールフォントとキーマップ</p>
+
+<pre><code class="ruby:">nano /etc/vconsole.conf
+</code></pre>
+
+<p>以下を追記</p>
+
+<pre><code class="ruby:console.conf">KEYMAP=jp106
+FONT=lat9w-16
+</code></pre>
+
+<p>####タイムゾーンとハードウェアクロック<br>
+タイムゾーンの設定</p>
+
+<pre><code class="ruby:">ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+</code></pre>
+
+<p>ハードウェアクロックの設定</p>
+
+<pre><code class="ruby:">hwclock --systohc --utc
+</code></pre>
+
+<p>####ホスト名</p>
+
+<pre><code class="ruby:">echo ホスト名 &gt; /etc/hostname
+</code></pre>
+
+<p>同じホスト名を /etc/hosts に追加</p>
+
+<pre><code class="ruby:">nano /etc/hosts
+</code></pre>
+
+<pre><code class="ruby:hosts">#&lt;ip-address&gt; &lt;hostname.domain.org&gt; &lt;hostname&gt;
+127.0.0.1 localhost.localdomain localhost ホスト名
+::1   localhost.localdomain localhost ホスト名
+</code></pre>
+
+<p>####ネットワークとパスワード<br>
+今回ネットワークの設定は有線の動的IPにします。<br>
+固定IPの場合は<a href="https://wiki.archlinuxjp.org/index.php/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E8%A8%AD%E5%AE%9A#.E5.9B.BA.E5.AE.9A_IP_.E3.82.A2.E3.83.89.E3.83.AC.E3.82.B9">ネットワーク設定</a>を参照</p>
+
+<p>ネットワークの設定</p>
+
+<pre><code class="ruby:">systemctl enable dhcpcd
+</code></pre>
+
+<p>パスワードの設定</p>
+
+<pre><code class="ruby:">passwd
+</code></pre>
+
+<p>##GRUBのインストール</p>
+
+<p>GRUBはそれぞれのブート方式で違うので順番に書いていきます</p>
+
+<p>####BIOSブート</p>
+
+<pre><code class="ruby:">pacman -S os-prober grub
+grub-install --target=i386-pc --recheck /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+
+<p>####32bitUEFIブート</p>
+
+<pre><code class="ruby:">pacman -S grub dosfstools efibootmgr
+grub-install --target=i386-efi --efi-directory=/boot --bootloader-id=grub --recheck
+mkdir /boot/EFI/boot
+cp /boot/EFI/grub/grubia32.efi /boot/EFI/boot/bootia32.efi
+grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+
+<p>####64bitUEFIブート</p>
+
+<pre><code class="ruby:">pacman -S grub dosfstools efibootmgr
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub --recheck
+mkdir /boot/EFI/boot
+cp /boot/EFI/grub/grubx64.efi  /boot/EFI/boot/bootx64.efi
+grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+
+<p>GRUBのインストールが無事終わったらシステムから出て再起動</p>
+
+<pre><code class="ruby:">exit
+umount -R /mnt
+reboot
+</code></pre>
+
+<p>無事起動したら成功です。<br>
+お疲れ様でした！！</p>
+
+<p>##追記</p>
+
+<p>もしこれでインストールできないとき、ArchのブートUSBを使ってシステムに入る方法を記述しておきます。<br>
+この方法は結構色んなトラブルで使うのでもし起動できなくなってシステムをに入れなくなったらやってみてください</p>
+
+<p>Archiso起動後以下コマンド実行</p>
+
+<pre><code class="ruby:">mount /dev/sda3 /mnt
+mount /dev/sda1 /mnt/boot
+mount /dev/sda4 /mnt/home
+arch-chroot /mnt /bin/bash
+</code></pre>
+
+<p>※マウントはパーティションを分けてる場合全部やってください</p>
+
+I, [2018-08-19T10:37:48.642648 #9397]  INFO -- : <p>#前置き</p>
+
+<p>自分がArchをインストールした際詰まった箇所を見直すためと<br>
+自分自身とても詰まったブート方式の違いについて（64bitUEFI・32bitUEFI・BIOS）<br>
+これからArchLinuxをインストールする方の力に少しでも力に慣れたらと思い記事を書かせていただきました。</p>
+
+<p>本文はブート方式ごとの設定を記述しており、各項目ごとに64bitUEFI・32bitUEFI・BIOSの設定があります。<br>
+自分の環境にあったものを選択してください。</p>
+
+<p>初投稿で文章力もないので読みづらい文書となっていますがご了承ください</p>
+
+<p>ArchLinuxをインストールする際<a href="https://wiki.archlinuxjp.org/index.php/%E3%83%93%E3%82%AE%E3%83%8A%E3%83%BC%E3%82%BA%E3%82%AC%E3%82%A4%E3%83%89#.E6.9C.80.E6.96.B0.E3.81.AE.E3.82.A4.E3.83.B3.E3.82.B9.E3.83.88.E3.83.BC.E3.83.AB.E3.83.A1.E3.83.87.E3.82.A3.E3.82.A2.E3.82.92.E6.BA.96.E5.82.99.E3.81.99.E3.82.8B">Archの公式wiki</a>のビギナーズガイドが優秀なのでこちらを見ながらの作業をおすすめします。</p>
+
+<p>#インストールディスクの作成<br>
+インストールディスクはUSBで作るほうが色々便利なのでUSBでの作り方のみ記述します。<br>
+PCのブート方式によって作成手順が違うので自分のPCのブート方式をよく調べてから作業してください。</p>
+
+<p><a href="https://wiki.archlinuxjp.org/index.php/USB_%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%83%A1%E3%83%87%E3%82%A3%E3%82%A2">USBインストールガイド</a><br>
+####64bitUEFI・BIOSブート<br>
+・<a href="https://www.archlinux.org/download/" title="Arch Linux Downloads">Arch Linux Downloads</a>からisoの入手<br>
+・ddコマンドか<a href="http://rufus.akeo.ie/">Rufus</a>を使いisoファイルを書き込む</p>
+
+<p>※/dev/sdx1 ではなく /dev/sdx を使い。x はあなたの使うデバイスに置き換える。</p>
+
+<pre><code class="ruby:ddコマンド">dd bs=4M if=/path/to/archlinux.iso of=/dev/sdx &amp;&amp; sync
+</code></pre>
+
+<p>####32bitUEFIブート<br>
+・<a href="https://www.archlinux.org/download/" title="Arch Linux Downloads">Arch Linux Downloads</a>からisoの入手<br>
+・<a href="http://rufus.akeo.ie/">Rufus</a>を使いisoファイルを書き込む　※USBラベルは「ARCHISO」に設定しておく<br>
+・<a href="https://github.com/jfwells/linux-asus-t100ta/blob/master/boot/bootia32.efi">bootia32</a>をダウンロードする<br>
+・書き込んだUSBのEFIディレクトリを開き、ダウンロードしたbootia32を配置<br>
+・/boot/grub/grub.cfgを作成し以下を記述　※ディレクトリがない場合は作成</p>
+
+<pre><code class="ruby:grub.cfg">menuentry &#39;Arch Linux i686&#39;{
+echo &#39;Loading Linux core repo kernel ...&#39;
+linux /arch/boot/i686/vmlinuz noefi nomodeset archisobasedir=arch archisolabel=ARCHISO
+echo &#39;Loading initial ramdisk ...&#39;
+initrd /arch/boot/i686/archiso.img
+}
+menuentry &#39;Arch Linux x86_64&#39;{
+echo &#39;Loading Linux core repo kernel ...&#39;
+linux /arch/boot/x86_64/vmlinuz noefi nomodeset archisobasedir=arch archisolabel=ARCHISO
+echo &#39;Loading initial ramdisk ...&#39;
+initrd /arch/boot/x86_64/archiso.img
+}
+</code></pre>
+
+<p>#インストール作業<br>
+USBの準備ができたらいよいよインストールに入ります。現在2015年10月29日に記事を作成していますが<br>
+年数が経つとインストール方法が変わったりする場合があるので<a href="https://wiki.archlinuxjp.org/index.php/%E3%83%93%E3%82%AE%E3%83%8A%E3%83%BC%E3%82%BA%E3%82%AC%E3%82%A4%E3%83%89">Archインストールガイド</a>をよくみながら作業をしてください。</p>
+
+<p>起動画面にてどちらのアーキテクチャか選択できるので、自分のPCにあったほうを選択してください。<br>
+Boot Arch Linux (x86_64)　<br>
+Boot Arch Linux (i386)　  ※32bitUEFIはこちらを選択</p>
+
+<p>##キーボードレイアウトの設定<br>
+Archが立ち上がったらデフォルトのキーレイアウトがUSになっているので変更</p>
+
+<pre><code class="ruby:">loadkeys jp106
+</code></pre>
+
+<p>##インターネットの設定<br>
+無線</p>
+
+<pre><code class="ruby:">wifi-menu
+</code></pre>
+
+<p>有線<br>
+自動接続</p>
+
+<p>※固定IPを設定する場合は下記参照<br>
+<a href="https://wiki.archlinuxjp.org/index.php/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E8%A8%AD%E5%AE%9A#.E5.9B.BA.E5.AE.9A_IP_.E3.82.A2.E3.83.89.E3.83.AC.E3.82.B9">ネットワーク設定</a></p>
+
+<p>##システムクロックの更新<br>
+systemd-timesyncd を使ってシステムクロックを設定</p>
+
+<pre><code class="ruby:">timedatectl set-ntp true
+</code></pre>
+
+<pre><code class="ruby:サービスの状態確認">timedatectl status
+</code></pre>
+
+<p>##パーティショニング<br>
+パーティニングにおいて必須なのは下記の二つ<br>
+・ルートディレクトリ / のパーティション。<br>
+・UEFI が有効になっている場合、EFI システムパーティション。<br>
+※詳細は<a href="https://wiki.archlinux.jp/index.php/%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0">パーティショニング</a>参照</p>
+
+<p>今回の構成<br>
+/dev/sda1  ・・・  /boot　<br>
+/dev/sda2  ・・・ swap　　<br>
+/dev/sda3 ・・・ /root　　<br>
+/dev/sda4 ・・・ /home　　</p>
+
+<p>※UEFIブートの場合、EFI System Partitionというものを作成しなければいけないのだが今回は/bootと統合して作成する</p>
+
+<p>####現在のパーティション確認</p>
+
+<pre><code class="ruby:">fdisk -l
+</code></pre>
+
+<p>####起動モードの確認<br>
+UEFIブートで立ち上がっているか確認できます。</p>
+
+<pre><code class="ruby:">ls /sys/firmware/efi/efivars
+</code></pre>
+
+<p>※ディレクトリが存在しない場合、BIOS (または CSM) モードで起動しています。</p>
+
+<p>####パーティション作成<br>
+partedの起動</p>
+
+<pre><code class="ruby:">parted /dev/sda
+</code></pre>
+
+<pre><code class="ruby:BIOSブートの場合">(parted)mklabel msdos
+(parted)mkpart primary ext4 1MiB 100MiB
+(parted)mkpart primary linux-swap 100MiB  2GiB
+(parted)mkpart primary ext4 2GiB 10GiB
+(parted)mkpart primary ext4 10GiB 100% 
+(parted)q
+</code></pre>
+
+<pre><code class="ruby:UEFIブートの場合">(parted)mklabel gpt
+(parted)mkpart ESP fat32 1MiB 513MiB
+(parted)mkpart primary linux-swap 513MiB  2.5GiB
+(parted)mkpart primary ext4 2.5GiB 10GiB
+(parted)mkpart primary ext4 10GiB 100%
+(parted)q 
+</code></pre>
+
+<p>※各パーティションのサイズは自分の環境に置き換えてください</p>
+
+<p>作成後、パーティションを確認したい場合は下記コマンド実行</p>
+
+<pre><code class="ruby:">fdisk -l
+</code></pre>
+
+<p>##ファイルシステム作成<br>
+ファイルシステムとスワップ領域の作成を行う</p>
+
+<pre><code class="ruby:BIOSブートの場合">mkfs.ext4 /dev/sda1
+mkswap /dev/sda2
+swapon /dev/sda2
+mkfs.ext4 /dev/sda3
+mkfs.ext4 /dev/sda4
+</code></pre>
+
+<p>UEFIの場合bootディレクトリはfat32で作成する</p>
+
+<pre><code class="ruby:UEFIブートの場合">mkfs.vfat -F32 /dev/sda1
+mkswap /dev/sda2
+swapon /dev/sda2
+mkfs.ext4 /dev/sda3
+mkfs.ext4 /dev/sda4
+</code></pre>
+
+<p>##インストール</p>
+
+<p>ベースシステムのインストールになります。<br>
+マウントしないとインストールができないので以下を実行</p>
+
+<p>####マウント<br>
+<code>ruby:<br>
+mount /dev/sda3 /mnt<br>
+mkdir /mnt/boot<br>
+mkdir /mnt/home<br>
+mount /dev/sda1 /mnt/boot<br>
+mount /dev/sda4 /mnt/home<br>
+</code></p>
+
+<p>####ミラーリスト選択</p>
+
+<pre><code class="ruby:">nano /etc/pacman.d/mirrorlist
+</code></pre>
+
+<pre><code class="ruby:">##
+## Arch Linux repository mirrorlist
+## Sorted by mirror score from mirror status page
+## Generated on YYYY-MM-DD
+##
+#japan
+Server = http://ftp.jaist.ac.jp/pub/Linux/ArchLinux/$repo/os/$arch
+...
+</code></pre>
+
+<p>・Ctrl+W で「japan」と入力しURLを検索<br>
+・Ctrl+K で Server 行を切り取り。<br>
+・PageUp キーで上にスクロール。<br>
+・Ctrl+U でリストの一番上にペースト。<br>
+・Ctrl+X で終了、保存するか聞かれたら、Y を押し Enter で上書き保存。</p>
+
+<p>####ベースシステムインストール</p>
+
+<pre><code class="ruby:">pacstrap /mnt base base-devel
+</code></pre>
+
+<p>####fstab作成</p>
+
+<pre><code class="ruby:">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+</code></pre>
+
+<p>##システムの設定<br>
+インストールが完了したらいよいよそのシステムに入ります。</p>
+
+<pre><code class="ruby:">arch-chroot /mnt /bin/bash
+</code></pre>
+
+<p>####ロケールの設定<br>
+locale.gen ファイルのコメントアウトを解除します</p>
+
+<pre><code class="rudy:">nano /etc/locale.gen
+</code></pre>
+
+<pre><code class="rudy:locale.gen">...
+#en_SG ISO-8859-1
+en_US.UTF-8 UTF-8
+#en_US ISO-8859-1
+...
+#ja_JP.EUC-JP EUC-JP
+ja_JP.UTF-8 UTF-8
+#ka_GE.UTF-8 UTF-8
+...
+</code></pre>
+
+<p>解除後、以下を実行</p>
+
+<pre><code class="ruby:">locale-gen
+echo LANG=en_US.UTF-8 &gt; /etc/locale.conf
+</code></pre>
+
+<p>####コンソールフォントとキーマップ</p>
+
+<pre><code class="ruby:">nano /etc/vconsole.conf
+</code></pre>
+
+<p>以下を追記</p>
+
+<pre><code class="ruby:console.conf">KEYMAP=jp106
+FONT=lat9w-16
+</code></pre>
+
+<p>####タイムゾーンとハードウェアクロック<br>
+タイムゾーンの設定</p>
+
+<pre><code class="ruby:">ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+</code></pre>
+
+<p>ハードウェアクロックの設定</p>
+
+<pre><code class="ruby:">hwclock --systohc --utc
+</code></pre>
+
+<p>####ホスト名</p>
+
+<pre><code class="ruby:">echo ホスト名 &gt; /etc/hostname
+</code></pre>
+
+<p>同じホスト名を /etc/hosts に追加</p>
+
+<pre><code class="ruby:">nano /etc/hosts
+</code></pre>
+
+<pre><code class="ruby:hosts">#&lt;ip-address&gt; &lt;hostname.domain.org&gt; &lt;hostname&gt;
+127.0.0.1 localhost.localdomain localhost ホスト名
+::1   localhost.localdomain localhost ホスト名
+</code></pre>
+
+<p>####ネットワークとパスワード<br>
+今回ネットワークの設定は有線の動的IPにします。<br>
+固定IPの場合は<a href="https://wiki.archlinuxjp.org/index.php/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E8%A8%AD%E5%AE%9A#.E5.9B.BA.E5.AE.9A_IP_.E3.82.A2.E3.83.89.E3.83.AC.E3.82.B9">ネットワーク設定</a>を参照</p>
+
+<p>ネットワークの設定</p>
+
+<pre><code class="ruby:">systemctl enable dhcpcd
+</code></pre>
+
+<p>パスワードの設定</p>
+
+<pre><code class="ruby:">passwd
+</code></pre>
+
+<p>##GRUBのインストール</p>
+
+<p>GRUBはそれぞれのブート方式で違うので順番に書いていきます</p>
+
+<p>####BIOSブート</p>
+
+<pre><code class="ruby:">pacman -S os-prober grub
+grub-install --target=i386-pc --recheck /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+
+<p>####32bitUEFIブート</p>
+
+<pre><code class="ruby:">pacman -S grub dosfstools efibootmgr
+grub-install --target=i386-efi --efi-directory=/boot --bootloader-id=grub --recheck
+mkdir /boot/EFI/boot
+cp /boot/EFI/grub/grubia32.efi /boot/EFI/boot/bootia32.efi
+grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+
+<p>####64bitUEFIブート</p>
+
+<pre><code class="ruby:">pacman -S grub dosfstools efibootmgr
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub --recheck
+mkdir /boot/EFI/boot
+cp /boot/EFI/grub/grubx64.efi  /boot/EFI/boot/bootx64.efi
+grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+
+<p>GRUBのインストールが無事終わったらシステムから出て再起動</p>
+
+<pre><code class="ruby:">exit
+umount -R /mnt
+reboot
+</code></pre>
+
+<p>無事起動したら成功です。<br>
+お疲れ様でした！！</p>
+
+<p>##追記</p>
+
+<p>もしこれでインストールできないとき、ArchのブートUSBを使ってシステムに入る方法を記述しておきます。<br>
+この方法は結構色んなトラブルで使うのでもし起動できなくなってシステムをに入れなくなったらやってみてください</p>
+
+<p>Archiso起動後以下コマンド実行</p>
+
+<pre><code class="ruby:">mount /dev/sda3 /mnt
+mount /dev/sda1 /mnt/boot
+mount /dev/sda4 /mnt/home
+arch-chroot /mnt /bin/bash
+</code></pre>
+
+<p>※マウントはパーティションを分けてる場合全部やってください</p>
+
+I, [2018-08-19T10:37:51.145210 #9397]  INFO -- : <p>#前置き</p>
+
+<p>自分がArchをインストールした際詰まった箇所を見直すためと<br>
+自分自身とても詰まったブート方式の違いについて（64bitUEFI・32bitUEFI・BIOS）<br>
+これからArchLinuxをインストールする方の力に少しでも力に慣れたらと思い記事を書かせていただきました。</p>
+
+<p>本文はブート方式ごとの設定を記述しており、各項目ごとに64bitUEFI・32bitUEFI・BIOSの設定があります。<br>
+自分の環境にあったものを選択してください。</p>
+
+<p>初投稿で文章力もないので読みづらい文書となっていますがご了承ください</p>
+
+<p>ArchLinuxをインストールする際<a href="https://wiki.archlinuxjp.org/index.php/%E3%83%93%E3%82%AE%E3%83%8A%E3%83%BC%E3%82%BA%E3%82%AC%E3%82%A4%E3%83%89#.E6.9C.80.E6.96.B0.E3.81.AE.E3.82.A4.E3.83.B3.E3.82.B9.E3.83.88.E3.83.BC.E3.83.AB.E3.83.A1.E3.83.87.E3.82.A3.E3.82.A2.E3.82.92.E6.BA.96.E5.82.99.E3.81.99.E3.82.8B">Archの公式wiki</a>のビギナーズガイドが優秀なのでこちらを見ながらの作業をおすすめします。</p>
+
+<p>#インストールディスクの作成<br>
+インストールディスクはUSBで作るほうが色々便利なのでUSBでの作り方のみ記述します。<br>
+PCのブート方式によって作成手順が違うので自分のPCのブート方式をよく調べてから作業してください。</p>
+
+<p><a href="https://wiki.archlinuxjp.org/index.php/USB_%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%83%A1%E3%83%87%E3%82%A3%E3%82%A2">USBインストールガイド</a><br>
+####64bitUEFI・BIOSブート<br>
+・<a href="https://www.archlinux.org/download/" title="Arch Linux Downloads">Arch Linux Downloads</a>からisoの入手<br>
+・ddコマンドか<a href="http://rufus.akeo.ie/">Rufus</a>を使いisoファイルを書き込む</p>
+
+<p>※/dev/sdx1 ではなく /dev/sdx を使い。x はあなたの使うデバイスに置き換える。</p>
+
+<pre><code class="ruby:ddコマンド">dd bs=4M if=/path/to/archlinux.iso of=/dev/sdx &amp;&amp; sync
+</code></pre>
+
+<p>####32bitUEFIブート<br>
+・<a href="https://www.archlinux.org/download/" title="Arch Linux Downloads">Arch Linux Downloads</a>からisoの入手<br>
+・<a href="http://rufus.akeo.ie/">Rufus</a>を使いisoファイルを書き込む　※USBラベルは「ARCHISO」に設定しておく<br>
+・<a href="https://github.com/jfwells/linux-asus-t100ta/blob/master/boot/bootia32.efi">bootia32</a>をダウンロードする<br>
+・書き込んだUSBのEFIディレクトリを開き、ダウンロードしたbootia32を配置<br>
+・/boot/grub/grub.cfgを作成し以下を記述　※ディレクトリがない場合は作成</p>
+
+<pre><code class="ruby:grub.cfg">menuentry &#39;Arch Linux i686&#39;{
+echo &#39;Loading Linux core repo kernel ...&#39;
+linux /arch/boot/i686/vmlinuz noefi nomodeset archisobasedir=arch archisolabel=ARCHISO
+echo &#39;Loading initial ramdisk ...&#39;
+initrd /arch/boot/i686/archiso.img
+}
+menuentry &#39;Arch Linux x86_64&#39;{
+echo &#39;Loading Linux core repo kernel ...&#39;
+linux /arch/boot/x86_64/vmlinuz noefi nomodeset archisobasedir=arch archisolabel=ARCHISO
+echo &#39;Loading initial ramdisk ...&#39;
+initrd /arch/boot/x86_64/archiso.img
+}
+</code></pre>
+
+<p>#インストール作業<br>
+USBの準備ができたらいよいよインストールに入ります。現在2015年10月29日に記事を作成していますが<br>
+年数が経つとインストール方法が変わったりする場合があるので<a href="https://wiki.archlinuxjp.org/index.php/%E3%83%93%E3%82%AE%E3%83%8A%E3%83%BC%E3%82%BA%E3%82%AC%E3%82%A4%E3%83%89">Archインストールガイド</a>をよくみながら作業をしてください。</p>
+
+<p>起動画面にてどちらのアーキテクチャか選択できるので、自分のPCにあったほうを選択してください。<br>
+Boot Arch Linux (x86_64)　<br>
+Boot Arch Linux (i386)　  ※32bitUEFIはこちらを選択</p>
+
+<p>##キーボードレイアウトの設定<br>
+Archが立ち上がったらデフォルトのキーレイアウトがUSになっているので変更</p>
+
+<pre><code class="ruby:">loadkeys jp106
+</code></pre>
+
+<p>##インターネットの設定<br>
+無線</p>
+
+<pre><code class="ruby:">wifi-menu
+</code></pre>
+
+<p>有線<br>
+自動接続</p>
+
+<p>※固定IPを設定する場合は下記参照<br>
+<a href="https://wiki.archlinuxjp.org/index.php/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E8%A8%AD%E5%AE%9A#.E5.9B.BA.E5.AE.9A_IP_.E3.82.A2.E3.83.89.E3.83.AC.E3.82.B9">ネットワーク設定</a></p>
+
+<p>##システムクロックの更新<br>
+systemd-timesyncd を使ってシステムクロックを設定</p>
+
+<pre><code class="ruby:">timedatectl set-ntp true
+</code></pre>
+
+<pre><code class="ruby:サービスの状態確認">timedatectl status
+</code></pre>
+
+<p>##パーティショニング<br>
+パーティニングにおいて必須なのは下記の二つ<br>
+・ルートディレクトリ / のパーティション。<br>
+・UEFI が有効になっている場合、EFI システムパーティション。<br>
+※詳細は<a href="https://wiki.archlinux.jp/index.php/%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0">パーティショニング</a>参照</p>
+
+<p>今回の構成<br>
+/dev/sda1  ・・・  /boot　<br>
+/dev/sda2  ・・・ swap　　<br>
+/dev/sda3 ・・・ /root　　<br>
+/dev/sda4 ・・・ /home　　</p>
+
+<p>※UEFIブートの場合、EFI System Partitionというものを作成しなければいけないのだが今回は/bootと統合して作成する</p>
+
+<p>####現在のパーティション確認</p>
+
+<pre><code class="ruby:">fdisk -l
+</code></pre>
+
+<p>####起動モードの確認<br>
+UEFIブートで立ち上がっているか確認できます。</p>
+
+<pre><code class="ruby:">ls /sys/firmware/efi/efivars
+</code></pre>
+
+<p>※ディレクトリが存在しない場合、BIOS (または CSM) モードで起動しています。</p>
+
+<p>####パーティション作成<br>
+partedの起動</p>
+
+<pre><code class="ruby:">parted /dev/sda
+</code></pre>
+
+<pre><code class="ruby:BIOSブートの場合">(parted)mklabel msdos
+(parted)mkpart primary ext4 1MiB 100MiB
+(parted)mkpart primary linux-swap 100MiB  2GiB
+(parted)mkpart primary ext4 2GiB 10GiB
+(parted)mkpart primary ext4 10GiB 100% 
+(parted)q
+</code></pre>
+
+<pre><code class="ruby:UEFIブートの場合">(parted)mklabel gpt
+(parted)mkpart ESP fat32 1MiB 513MiB
+(parted)mkpart primary linux-swap 513MiB  2.5GiB
+(parted)mkpart primary ext4 2.5GiB 10GiB
+(parted)mkpart primary ext4 10GiB 100%
+(parted)q 
+</code></pre>
+
+<p>※各パーティションのサイズは自分の環境に置き換えてください</p>
+
+<p>作成後、パーティションを確認したい場合は下記コマンド実行</p>
+
+<pre><code class="ruby:">fdisk -l
+</code></pre>
+
+<p>##ファイルシステム作成<br>
+ファイルシステムとスワップ領域の作成を行う</p>
+
+<pre><code class="ruby:BIOSブートの場合">mkfs.ext4 /dev/sda1
+mkswap /dev/sda2
+swapon /dev/sda2
+mkfs.ext4 /dev/sda3
+mkfs.ext4 /dev/sda4
+</code></pre>
+
+<p>UEFIの場合bootディレクトリはfat32で作成する</p>
+
+<pre><code class="ruby:UEFIブートの場合">mkfs.vfat -F32 /dev/sda1
+mkswap /dev/sda2
+swapon /dev/sda2
+mkfs.ext4 /dev/sda3
+mkfs.ext4 /dev/sda4
+</code></pre>
+
+<p>##インストール</p>
+
+<p>ベースシステムのインストールになります。<br>
+マウントしないとインストールができないので以下を実行</p>
+
+<p>####マウント<br>
+<code>ruby:<br>
+mount /dev/sda3 /mnt<br>
+mkdir /mnt/boot<br>
+mkdir /mnt/home<br>
+mount /dev/sda1 /mnt/boot<br>
+mount /dev/sda4 /mnt/home<br>
+</code></p>
+
+<p>####ミラーリスト選択</p>
+
+<pre><code class="ruby:">nano /etc/pacman.d/mirrorlist
+</code></pre>
+
+<pre><code class="ruby:">##
+## Arch Linux repository mirrorlist
+## Sorted by mirror score from mirror status page
+## Generated on YYYY-MM-DD
+##
+#japan
+Server = http://ftp.jaist.ac.jp/pub/Linux/ArchLinux/$repo/os/$arch
+...
+</code></pre>
+
+<p>・Ctrl+W で「japan」と入力しURLを検索<br>
+・Ctrl+K で Server 行を切り取り。<br>
+・PageUp キーで上にスクロール。<br>
+・Ctrl+U でリストの一番上にペースト。<br>
+・Ctrl+X で終了、保存するか聞かれたら、Y を押し Enter で上書き保存。</p>
+
+<p>####ベースシステムインストール</p>
+
+<pre><code class="ruby:">pacstrap /mnt base base-devel
+</code></pre>
+
+<p>####fstab作成</p>
+
+<pre><code class="ruby:">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+</code></pre>
+
+<p>##システムの設定<br>
+インストールが完了したらいよいよそのシステムに入ります。</p>
+
+<pre><code class="ruby:">arch-chroot /mnt /bin/bash
+</code></pre>
+
+<p>####ロケールの設定<br>
+locale.gen ファイルのコメントアウトを解除します</p>
+
+<pre><code class="rudy:">nano /etc/locale.gen
+</code></pre>
+
+<pre><code class="rudy:locale.gen">...
+#en_SG ISO-8859-1
+en_US.UTF-8 UTF-8
+#en_US ISO-8859-1
+...
+#ja_JP.EUC-JP EUC-JP
+ja_JP.UTF-8 UTF-8
+#ka_GE.UTF-8 UTF-8
+...
+</code></pre>
+
+<p>解除後、以下を実行</p>
+
+<pre><code class="ruby:">locale-gen
+echo LANG=en_US.UTF-8 &gt; /etc/locale.conf
+</code></pre>
+
+<p>####コンソールフォントとキーマップ</p>
+
+<pre><code class="ruby:">nano /etc/vconsole.conf
+</code></pre>
+
+<p>以下を追記</p>
+
+<pre><code class="ruby:console.conf">KEYMAP=jp106
+FONT=lat9w-16
+</code></pre>
+
+<p>####タイムゾーンとハードウェアクロック<br>
+タイムゾーンの設定</p>
+
+<pre><code class="ruby:">ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+</code></pre>
+
+<p>ハードウェアクロックの設定</p>
+
+<pre><code class="ruby:">hwclock --systohc --utc
+</code></pre>
+
+<p>####ホスト名</p>
+
+<pre><code class="ruby:">echo ホスト名 &gt; /etc/hostname
+</code></pre>
+
+<p>同じホスト名を /etc/hosts に追加</p>
+
+<pre><code class="ruby:">nano /etc/hosts
+</code></pre>
+
+<pre><code class="ruby:hosts">#&lt;ip-address&gt; &lt;hostname.domain.org&gt; &lt;hostname&gt;
+127.0.0.1 localhost.localdomain localhost ホスト名
+::1   localhost.localdomain localhost ホスト名
+</code></pre>
+
+<p>####ネットワークとパスワード<br>
+今回ネットワークの設定は有線の動的IPにします。<br>
+固定IPの場合は<a href="https://wiki.archlinuxjp.org/index.php/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E8%A8%AD%E5%AE%9A#.E5.9B.BA.E5.AE.9A_IP_.E3.82.A2.E3.83.89.E3.83.AC.E3.82.B9">ネットワーク設定</a>を参照</p>
+
+<p>ネットワークの設定</p>
+
+<pre><code class="ruby:">systemctl enable dhcpcd
+</code></pre>
+
+<p>パスワードの設定</p>
+
+<pre><code class="ruby:">passwd
+</code></pre>
+
+<p>##GRUBのインストール</p>
+
+<p>GRUBはそれぞれのブート方式で違うので順番に書いていきます</p>
+
+<p>####BIOSブート</p>
+
+<pre><code class="ruby:">pacman -S os-prober grub
+grub-install --target=i386-pc --recheck /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+
+<p>####32bitUEFIブート</p>
+
+<pre><code class="ruby:">pacman -S grub dosfstools efibootmgr
+grub-install --target=i386-efi --efi-directory=/boot --bootloader-id=grub --recheck
+mkdir /boot/EFI/boot
+cp /boot/EFI/grub/grubia32.efi /boot/EFI/boot/bootia32.efi
+grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+
+<p>####64bitUEFIブート</p>
+
+<pre><code class="ruby:">pacman -S grub dosfstools efibootmgr
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub --recheck
+mkdir /boot/EFI/boot
+cp /boot/EFI/grub/grubx64.efi  /boot/EFI/boot/bootx64.efi
+grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+
+<p>GRUBのインストールが無事終わったらシステムから出て再起動</p>
+
+<pre><code class="ruby:">exit
+umount -R /mnt
+reboot
+</code></pre>
+
+<p>無事起動したら成功です。<br>
+お疲れ様でした！！</p>
+
+<p>##追記</p>
+
+<p>もしこれでインストールできないとき、ArchのブートUSBを使ってシステムに入る方法を記述しておきます。<br>
+この方法は結構色んなトラブルで使うのでもし起動できなくなってシステムをに入れなくなったらやってみてください</p>
+
+<p>Archiso起動後以下コマンド実行</p>
+
+<pre><code class="ruby:">mount /dev/sda3 /mnt
+mount /dev/sda1 /mnt/boot
+mount /dev/sda4 /mnt/home
+arch-chroot /mnt /bin/bash
+</code></pre>
+
+<p>※マウントはパーティションを分けてる場合全部やってください</p>
+
+I, [2018-08-19T10:37:51.358353 #9397]  INFO -- : <p>#前置き</p>
+
+<p>自分がArchをインストールした際詰まった箇所を見直すためと<br>
+自分自身とても詰まったブート方式の違いについて（64bitUEFI・32bitUEFI・BIOS）<br>
+これからArchLinuxをインストールする方の力に少しでも力に慣れたらと思い記事を書かせていただきました。</p>
+
+<p>本文はブート方式ごとの設定を記述しており、各項目ごとに64bitUEFI・32bitUEFI・BIOSの設定があります。<br>
+自分の環境にあったものを選択してください。</p>
+
+<p>初投稿で文章力もないので読みづらい文書となっていますがご了承ください</p>
+
+<p>ArchLinuxをインストールする際<a href="https://wiki.archlinuxjp.org/index.php/%E3%83%93%E3%82%AE%E3%83%8A%E3%83%BC%E3%82%BA%E3%82%AC%E3%82%A4%E3%83%89#.E6.9C.80.E6.96.B0.E3.81.AE.E3.82.A4.E3.83.B3.E3.82.B9.E3.83.88.E3.83.BC.E3.83.AB.E3.83.A1.E3.83.87.E3.82.A3.E3.82.A2.E3.82.92.E6.BA.96.E5.82.99.E3.81.99.E3.82.8B">Archの公式wiki</a>のビギナーズガイドが優秀なのでこちらを見ながらの作業をおすすめします。</p>
+
+<p>#インストールディスクの作成<br>
+インストールディスクはUSBで作るほうが色々便利なのでUSBでの作り方のみ記述します。<br>
+PCのブート方式によって作成手順が違うので自分のPCのブート方式をよく調べてから作業してください。</p>
+
+<p><a href="https://wiki.archlinuxjp.org/index.php/USB_%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%83%A1%E3%83%87%E3%82%A3%E3%82%A2">USBインストールガイド</a><br>
+####64bitUEFI・BIOSブート<br>
+・<a href="https://www.archlinux.org/download/" title="Arch Linux Downloads">Arch Linux Downloads</a>からisoの入手<br>
+・ddコマンドか<a href="http://rufus.akeo.ie/">Rufus</a>を使いisoファイルを書き込む</p>
+
+<p>※/dev/sdx1 ではなく /dev/sdx を使い。x はあなたの使うデバイスに置き換える。</p>
+
+<pre><code class="ruby:ddコマンド">dd bs=4M if=/path/to/archlinux.iso of=/dev/sdx &amp;&amp; sync
+</code></pre>
+
+<p>####32bitUEFIブート<br>
+・<a href="https://www.archlinux.org/download/" title="Arch Linux Downloads">Arch Linux Downloads</a>からisoの入手<br>
+・<a href="http://rufus.akeo.ie/">Rufus</a>を使いisoファイルを書き込む　※USBラベルは「ARCHISO」に設定しておく<br>
+・<a href="https://github.com/jfwells/linux-asus-t100ta/blob/master/boot/bootia32.efi">bootia32</a>をダウンロードする<br>
+・書き込んだUSBのEFIディレクトリを開き、ダウンロードしたbootia32を配置<br>
+・/boot/grub/grub.cfgを作成し以下を記述　※ディレクトリがない場合は作成</p>
+
+<pre><code class="ruby:grub.cfg">menuentry &#39;Arch Linux i686&#39;{
+echo &#39;Loading Linux core repo kernel ...&#39;
+linux /arch/boot/i686/vmlinuz noefi nomodeset archisobasedir=arch archisolabel=ARCHISO
+echo &#39;Loading initial ramdisk ...&#39;
+initrd /arch/boot/i686/archiso.img
+}
+menuentry &#39;Arch Linux x86_64&#39;{
+echo &#39;Loading Linux core repo kernel ...&#39;
+linux /arch/boot/x86_64/vmlinuz noefi nomodeset archisobasedir=arch archisolabel=ARCHISO
+echo &#39;Loading initial ramdisk ...&#39;
+initrd /arch/boot/x86_64/archiso.img
+}
+</code></pre>
+
+<p>#インストール作業<br>
+USBの準備ができたらいよいよインストールに入ります。現在2015年10月29日に記事を作成していますが<br>
+年数が経つとインストール方法が変わったりする場合があるので<a href="https://wiki.archlinuxjp.org/index.php/%E3%83%93%E3%82%AE%E3%83%8A%E3%83%BC%E3%82%BA%E3%82%AC%E3%82%A4%E3%83%89">Archインストールガイド</a>をよくみながら作業をしてください。</p>
+
+<p>起動画面にてどちらのアーキテクチャか選択できるので、自分のPCにあったほうを選択してください。<br>
+Boot Arch Linux (x86_64)　<br>
+Boot Arch Linux (i386)　  ※32bitUEFIはこちらを選択</p>
+
+<p>##キーボードレイアウトの設定<br>
+Archが立ち上がったらデフォルトのキーレイアウトがUSになっているので変更</p>
+
+<pre><code class="ruby:">loadkeys jp106
+</code></pre>
+
+<p>##インターネットの設定<br>
+無線</p>
+
+<pre><code class="ruby:">wifi-menu
+</code></pre>
+
+<p>有線<br>
+自動接続</p>
+
+<p>※固定IPを設定する場合は下記参照<br>
+<a href="https://wiki.archlinuxjp.org/index.php/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E8%A8%AD%E5%AE%9A#.E5.9B.BA.E5.AE.9A_IP_.E3.82.A2.E3.83.89.E3.83.AC.E3.82.B9">ネットワーク設定</a></p>
+
+<p>##システムクロックの更新<br>
+systemd-timesyncd を使ってシステムクロックを設定</p>
+
+<pre><code class="ruby:">timedatectl set-ntp true
+</code></pre>
+
+<pre><code class="ruby:サービスの状態確認">timedatectl status
+</code></pre>
+
+<p>##パーティショニング<br>
+パーティニングにおいて必須なのは下記の二つ<br>
+・ルートディレクトリ / のパーティション。<br>
+・UEFI が有効になっている場合、EFI システムパーティション。<br>
+※詳細は<a href="https://wiki.archlinux.jp/index.php/%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0">パーティショニング</a>参照</p>
+
+<p>今回の構成<br>
+/dev/sda1  ・・・  /boot　<br>
+/dev/sda2  ・・・ swap　　<br>
+/dev/sda3 ・・・ /root　　<br>
+/dev/sda4 ・・・ /home　　</p>
+
+<p>※UEFIブートの場合、EFI System Partitionというものを作成しなければいけないのだが今回は/bootと統合して作成する</p>
+
+<p>####現在のパーティション確認</p>
+
+<pre><code class="ruby:">fdisk -l
+</code></pre>
+
+<p>####起動モードの確認<br>
+UEFIブートで立ち上がっているか確認できます。</p>
+
+<pre><code class="ruby:">ls /sys/firmware/efi/efivars
+</code></pre>
+
+<p>※ディレクトリが存在しない場合、BIOS (または CSM) モードで起動しています。</p>
+
+<p>####パーティション作成<br>
+partedの起動</p>
+
+<pre><code class="ruby:">parted /dev/sda
+</code></pre>
+
+<pre><code class="ruby:BIOSブートの場合">(parted)mklabel msdos
+(parted)mkpart primary ext4 1MiB 100MiB
+(parted)mkpart primary linux-swap 100MiB  2GiB
+(parted)mkpart primary ext4 2GiB 10GiB
+(parted)mkpart primary ext4 10GiB 100% 
+(parted)q
+</code></pre>
+
+<pre><code class="ruby:UEFIブートの場合">(parted)mklabel gpt
+(parted)mkpart ESP fat32 1MiB 513MiB
+(parted)mkpart primary linux-swap 513MiB  2.5GiB
+(parted)mkpart primary ext4 2.5GiB 10GiB
+(parted)mkpart primary ext4 10GiB 100%
+(parted)q 
+</code></pre>
+
+<p>※各パーティションのサイズは自分の環境に置き換えてください</p>
+
+<p>作成後、パーティションを確認したい場合は下記コマンド実行</p>
+
+<pre><code class="ruby:">fdisk -l
+</code></pre>
+
+<p>##ファイルシステム作成<br>
+ファイルシステムとスワップ領域の作成を行う</p>
+
+<pre><code class="ruby:BIOSブートの場合">mkfs.ext4 /dev/sda1
+mkswap /dev/sda2
+swapon /dev/sda2
+mkfs.ext4 /dev/sda3
+mkfs.ext4 /dev/sda4
+</code></pre>
+
+<p>UEFIの場合bootディレクトリはfat32で作成する</p>
+
+<pre><code class="ruby:UEFIブートの場合">mkfs.vfat -F32 /dev/sda1
+mkswap /dev/sda2
+swapon /dev/sda2
+mkfs.ext4 /dev/sda3
+mkfs.ext4 /dev/sda4
+</code></pre>
+
+<p>##インストール</p>
+
+<p>ベースシステムのインストールになります。<br>
+マウントしないとインストールができないので以下を実行</p>
+
+<p>####マウント<br>
+<code>ruby:<br>
+mount /dev/sda3 /mnt<br>
+mkdir /mnt/boot<br>
+mkdir /mnt/home<br>
+mount /dev/sda1 /mnt/boot<br>
+mount /dev/sda4 /mnt/home<br>
+</code></p>
+
+<p>####ミラーリスト選択</p>
+
+<pre><code class="ruby:">nano /etc/pacman.d/mirrorlist
+</code></pre>
+
+<pre><code class="ruby:">##
+## Arch Linux repository mirrorlist
+## Sorted by mirror score from mirror status page
+## Generated on YYYY-MM-DD
+##
+#japan
+Server = http://ftp.jaist.ac.jp/pub/Linux/ArchLinux/$repo/os/$arch
+...
+</code></pre>
+
+<p>・Ctrl+W で「japan」と入力しURLを検索<br>
+・Ctrl+K で Server 行を切り取り。<br>
+・PageUp キーで上にスクロール。<br>
+・Ctrl+U でリストの一番上にペースト。<br>
+・Ctrl+X で終了、保存するか聞かれたら、Y を押し Enter で上書き保存。</p>
+
+<p>####ベースシステムインストール</p>
+
+<pre><code class="ruby:">pacstrap /mnt base base-devel
+</code></pre>
+
+<p>####fstab作成</p>
+
+<pre><code class="ruby:">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+</code></pre>
+
+<p>##システムの設定<br>
+インストールが完了したらいよいよそのシステムに入ります。</p>
+
+<pre><code class="ruby:">arch-chroot /mnt /bin/bash
+</code></pre>
+
+<p>####ロケールの設定<br>
+locale.gen ファイルのコメントアウトを解除します</p>
+
+<pre><code class="rudy:">nano /etc/locale.gen
+</code></pre>
+
+<pre><code class="rudy:locale.gen">...
+#en_SG ISO-8859-1
+en_US.UTF-8 UTF-8
+#en_US ISO-8859-1
+...
+#ja_JP.EUC-JP EUC-JP
+ja_JP.UTF-8 UTF-8
+#ka_GE.UTF-8 UTF-8
+...
+</code></pre>
+
+<p>解除後、以下を実行</p>
+
+<pre><code class="ruby:">locale-gen
+echo LANG=en_US.UTF-8 &gt; /etc/locale.conf
+</code></pre>
+
+<p>####コンソールフォントとキーマップ</p>
+
+<pre><code class="ruby:">nano /etc/vconsole.conf
+</code></pre>
+
+<p>以下を追記</p>
+
+<pre><code class="ruby:console.conf">KEYMAP=jp106
+FONT=lat9w-16
+</code></pre>
+
+<p>####タイムゾーンとハードウェアクロック<br>
+タイムゾーンの設定</p>
+
+<pre><code class="ruby:">ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+</code></pre>
+
+<p>ハードウェアクロックの設定</p>
+
+<pre><code class="ruby:">hwclock --systohc --utc
+</code></pre>
+
+<p>####ホスト名</p>
+
+<pre><code class="ruby:">echo ホスト名 &gt; /etc/hostname
+</code></pre>
+
+<p>同じホスト名を /etc/hosts に追加</p>
+
+<pre><code class="ruby:">nano /etc/hosts
+</code></pre>
+
+<pre><code class="ruby:hosts">#&lt;ip-address&gt; &lt;hostname.domain.org&gt; &lt;hostname&gt;
+127.0.0.1 localhost.localdomain localhost ホスト名
+::1   localhost.localdomain localhost ホスト名
+</code></pre>
+
+<p>####ネットワークとパスワード<br>
+今回ネットワークの設定は有線の動的IPにします。<br>
+固定IPの場合は<a href="https://wiki.archlinuxjp.org/index.php/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E8%A8%AD%E5%AE%9A#.E5.9B.BA.E5.AE.9A_IP_.E3.82.A2.E3.83.89.E3.83.AC.E3.82.B9">ネットワーク設定</a>を参照</p>
+
+<p>ネットワークの設定</p>
+
+<pre><code class="ruby:">systemctl enable dhcpcd
+</code></pre>
+
+<p>パスワードの設定</p>
+
+<pre><code class="ruby:">passwd
+</code></pre>
+
+<p>##GRUBのインストール</p>
+
+<p>GRUBはそれぞれのブート方式で違うので順番に書いていきます</p>
+
+<p>####BIOSブート</p>
+
+<pre><code class="ruby:">pacman -S os-prober grub
+grub-install --target=i386-pc --recheck /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+
+<p>####32bitUEFIブート</p>
+
+<pre><code class="ruby:">pacman -S grub dosfstools efibootmgr
+grub-install --target=i386-efi --efi-directory=/boot --bootloader-id=grub --recheck
+mkdir /boot/EFI/boot
+cp /boot/EFI/grub/grubia32.efi /boot/EFI/boot/bootia32.efi
+grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+
+<p>####64bitUEFIブート</p>
+
+<pre><code class="ruby:">pacman -S grub dosfstools efibootmgr
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub --recheck
+mkdir /boot/EFI/boot
+cp /boot/EFI/grub/grubx64.efi  /boot/EFI/boot/bootx64.efi
+grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+
+<p>GRUBのインストールが無事終わったらシステムから出て再起動</p>
+
+<pre><code class="ruby:">exit
+umount -R /mnt
+reboot
+</code></pre>
+
+<p>無事起動したら成功です。<br>
+お疲れ様でした！！</p>
+
+<p>##追記</p>
+
+<p>もしこれでインストールできないとき、ArchのブートUSBを使ってシステムに入る方法を記述しておきます。<br>
+この方法は結構色んなトラブルで使うのでもし起動できなくなってシステムをに入れなくなったらやってみてください</p>
+
+<p>Archiso起動後以下コマンド実行</p>
+
+<pre><code class="ruby:">mount /dev/sda3 /mnt
+mount /dev/sda1 /mnt/boot
+mount /dev/sda4 /mnt/home
+arch-chroot /mnt /bin/bash
+</code></pre>
+
+<p>※マウントはパーティションを分けてる場合全部やってください</p>
+
+I, [2018-08-19T10:37:51.583920 #9397]  INFO -- : <p>#前置き</p>
+
+<p>自分がArchをインストールした際詰まった箇所を見直すためと<br>
+自分自身とても詰まったブート方式の違いについて（64bitUEFI・32bitUEFI・BIOS）<br>
+これからArchLinuxをインストールする方の力に少しでも力に慣れたらと思い記事を書かせていただきました。</p>
+
+<p>本文はブート方式ごとの設定を記述しており、各項目ごとに64bitUEFI・32bitUEFI・BIOSの設定があります。<br>
+自分の環境にあったものを選択してください。</p>
+
+<p>初投稿で文章力もないので読みづらい文書となっていますがご了承ください</p>
+
+<p>ArchLinuxをインストールする際<a href="https://wiki.archlinuxjp.org/index.php/%E3%83%93%E3%82%AE%E3%83%8A%E3%83%BC%E3%82%BA%E3%82%AC%E3%82%A4%E3%83%89#.E6.9C.80.E6.96.B0.E3.81.AE.E3.82.A4.E3.83.B3.E3.82.B9.E3.83.88.E3.83.BC.E3.83.AB.E3.83.A1.E3.83.87.E3.82.A3.E3.82.A2.E3.82.92.E6.BA.96.E5.82.99.E3.81.99.E3.82.8B">Archの公式wiki</a>のビギナーズガイドが優秀なのでこちらを見ながらの作業をおすすめします。</p>
+
+<p>#インストールディスクの作成<br>
+インストールディスクはUSBで作るほうが色々便利なのでUSBでの作り方のみ記述します。<br>
+PCのブート方式によって作成手順が違うので自分のPCのブート方式をよく調べてから作業してください。</p>
+
+<p><a href="https://wiki.archlinuxjp.org/index.php/USB_%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%83%A1%E3%83%87%E3%82%A3%E3%82%A2">USBインストールガイド</a><br>
+####64bitUEFI・BIOSブート<br>
+・<a href="https://www.archlinux.org/download/" title="Arch Linux Downloads">Arch Linux Downloads</a>からisoの入手<br>
+・ddコマンドか<a href="http://rufus.akeo.ie/">Rufus</a>を使いisoファイルを書き込む</p>
+
+<p>※/dev/sdx1 ではなく /dev/sdx を使い。x はあなたの使うデバイスに置き換える。</p>
+
+<pre><code class="ruby:ddコマンド">dd bs=4M if=/path/to/archlinux.iso of=/dev/sdx &amp;&amp; sync
+</code></pre>
+
+<p>####32bitUEFIブート<br>
+・<a href="https://www.archlinux.org/download/" title="Arch Linux Downloads">Arch Linux Downloads</a>からisoの入手<br>
+・<a href="http://rufus.akeo.ie/">Rufus</a>を使いisoファイルを書き込む　※USBラベルは「ARCHISO」に設定しておく<br>
+・<a href="https://github.com/jfwells/linux-asus-t100ta/blob/master/boot/bootia32.efi">bootia32</a>をダウンロードする<br>
+・書き込んだUSBのEFIディレクトリを開き、ダウンロードしたbootia32を配置<br>
+・/boot/grub/grub.cfgを作成し以下を記述　※ディレクトリがない場合は作成</p>
+
+<pre><code class="ruby:grub.cfg">menuentry &#39;Arch Linux i686&#39;{
+echo &#39;Loading Linux core repo kernel ...&#39;
+linux /arch/boot/i686/vmlinuz noefi nomodeset archisobasedir=arch archisolabel=ARCHISO
+echo &#39;Loading initial ramdisk ...&#39;
+initrd /arch/boot/i686/archiso.img
+}
+menuentry &#39;Arch Linux x86_64&#39;{
+echo &#39;Loading Linux core repo kernel ...&#39;
+linux /arch/boot/x86_64/vmlinuz noefi nomodeset archisobasedir=arch archisolabel=ARCHISO
+echo &#39;Loading initial ramdisk ...&#39;
+initrd /arch/boot/x86_64/archiso.img
+}
+</code></pre>
+
+<p>#インストール作業<br>
+USBの準備ができたらいよいよインストールに入ります。現在2015年10月29日に記事を作成していますが<br>
+年数が経つとインストール方法が変わったりする場合があるので<a href="https://wiki.archlinuxjp.org/index.php/%E3%83%93%E3%82%AE%E3%83%8A%E3%83%BC%E3%82%BA%E3%82%AC%E3%82%A4%E3%83%89">Archインストールガイド</a>をよくみながら作業をしてください。</p>
+
+<p>起動画面にてどちらのアーキテクチャか選択できるので、自分のPCにあったほうを選択してください。<br>
+Boot Arch Linux (x86_64)　<br>
+Boot Arch Linux (i386)　  ※32bitUEFIはこちらを選択</p>
+
+<p>##キーボードレイアウトの設定<br>
+Archが立ち上がったらデフォルトのキーレイアウトがUSになっているので変更</p>
+
+<pre><code class="ruby:">loadkeys jp106
+</code></pre>
+
+<p>##インターネットの設定<br>
+無線</p>
+
+<pre><code class="ruby:">wifi-menu
+</code></pre>
+
+<p>有線<br>
+自動接続</p>
+
+<p>※固定IPを設定する場合は下記参照<br>
+<a href="https://wiki.archlinuxjp.org/index.php/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E8%A8%AD%E5%AE%9A#.E5.9B.BA.E5.AE.9A_IP_.E3.82.A2.E3.83.89.E3.83.AC.E3.82.B9">ネットワーク設定</a></p>
+
+<p>##システムクロックの更新<br>
+systemd-timesyncd を使ってシステムクロックを設定</p>
+
+<pre><code class="ruby:">timedatectl set-ntp true
+</code></pre>
+
+<pre><code class="ruby:サービスの状態確認">timedatectl status
+</code></pre>
+
+<p>##パーティショニング<br>
+パーティニングにおいて必須なのは下記の二つ<br>
+・ルートディレクトリ / のパーティション。<br>
+・UEFI が有効になっている場合、EFI システムパーティション。<br>
+※詳細は<a href="https://wiki.archlinux.jp/index.php/%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0">パーティショニング</a>参照</p>
+
+<p>今回の構成<br>
+/dev/sda1  ・・・  /boot　<br>
+/dev/sda2  ・・・ swap　　<br>
+/dev/sda3 ・・・ /root　　<br>
+/dev/sda4 ・・・ /home　　</p>
+
+<p>※UEFIブートの場合、EFI System Partitionというものを作成しなければいけないのだが今回は/bootと統合して作成する</p>
+
+<p>####現在のパーティション確認</p>
+
+<pre><code class="ruby:">fdisk -l
+</code></pre>
+
+<p>####起動モードの確認<br>
+UEFIブートで立ち上がっているか確認できます。</p>
+
+<pre><code class="ruby:">ls /sys/firmware/efi/efivars
+</code></pre>
+
+<p>※ディレクトリが存在しない場合、BIOS (または CSM) モードで起動しています。</p>
+
+<p>####パーティション作成<br>
+partedの起動</p>
+
+<pre><code class="ruby:">parted /dev/sda
+</code></pre>
+
+<pre><code class="ruby:BIOSブートの場合">(parted)mklabel msdos
+(parted)mkpart primary ext4 1MiB 100MiB
+(parted)mkpart primary linux-swap 100MiB  2GiB
+(parted)mkpart primary ext4 2GiB 10GiB
+(parted)mkpart primary ext4 10GiB 100% 
+(parted)q
+</code></pre>
+
+<pre><code class="ruby:UEFIブートの場合">(parted)mklabel gpt
+(parted)mkpart ESP fat32 1MiB 513MiB
+(parted)mkpart primary linux-swap 513MiB  2.5GiB
+(parted)mkpart primary ext4 2.5GiB 10GiB
+(parted)mkpart primary ext4 10GiB 100%
+(parted)q 
+</code></pre>
+
+<p>※各パーティションのサイズは自分の環境に置き換えてください</p>
+
+<p>作成後、パーティションを確認したい場合は下記コマンド実行</p>
+
+<pre><code class="ruby:">fdisk -l
+</code></pre>
+
+<p>##ファイルシステム作成<br>
+ファイルシステムとスワップ領域の作成を行う</p>
+
+<pre><code class="ruby:BIOSブートの場合">mkfs.ext4 /dev/sda1
+mkswap /dev/sda2
+swapon /dev/sda2
+mkfs.ext4 /dev/sda3
+mkfs.ext4 /dev/sda4
+</code></pre>
+
+<p>UEFIの場合bootディレクトリはfat32で作成する</p>
+
+<pre><code class="ruby:UEFIブートの場合">mkfs.vfat -F32 /dev/sda1
+mkswap /dev/sda2
+swapon /dev/sda2
+mkfs.ext4 /dev/sda3
+mkfs.ext4 /dev/sda4
+</code></pre>
+
+<p>##インストール</p>
+
+<p>ベースシステムのインストールになります。<br>
+マウントしないとインストールができないので以下を実行</p>
+
+<p>####マウント<br>
+<code>ruby:<br>
+mount /dev/sda3 /mnt<br>
+mkdir /mnt/boot<br>
+mkdir /mnt/home<br>
+mount /dev/sda1 /mnt/boot<br>
+mount /dev/sda4 /mnt/home<br>
+</code></p>
+
+<p>####ミラーリスト選択</p>
+
+<pre><code class="ruby:">nano /etc/pacman.d/mirrorlist
+</code></pre>
+
+<pre><code class="ruby:">##
+## Arch Linux repository mirrorlist
+## Sorted by mirror score from mirror status page
+## Generated on YYYY-MM-DD
+##
+#japan
+Server = http://ftp.jaist.ac.jp/pub/Linux/ArchLinux/$repo/os/$arch
+...
+</code></pre>
+
+<p>・Ctrl+W で「japan」と入力しURLを検索<br>
+・Ctrl+K で Server 行を切り取り。<br>
+・PageUp キーで上にスクロール。<br>
+・Ctrl+U でリストの一番上にペースト。<br>
+・Ctrl+X で終了、保存するか聞かれたら、Y を押し Enter で上書き保存。</p>
+
+<p>####ベースシステムインストール</p>
+
+<pre><code class="ruby:">pacstrap /mnt base base-devel
+</code></pre>
+
+<p>####fstab作成</p>
+
+<pre><code class="ruby:">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+</code></pre>
+
+<p>##システムの設定<br>
+インストールが完了したらいよいよそのシステムに入ります。</p>
+
+<pre><code class="ruby:">arch-chroot /mnt /bin/bash
+</code></pre>
+
+<p>####ロケールの設定<br>
+locale.gen ファイルのコメントアウトを解除します</p>
+
+<pre><code class="rudy:">nano /etc/locale.gen
+</code></pre>
+
+<pre><code class="rudy:locale.gen">...
+#en_SG ISO-8859-1
+en_US.UTF-8 UTF-8
+#en_US ISO-8859-1
+...
+#ja_JP.EUC-JP EUC-JP
+ja_JP.UTF-8 UTF-8
+#ka_GE.UTF-8 UTF-8
+...
+</code></pre>
+
+<p>解除後、以下を実行</p>
+
+<pre><code class="ruby:">locale-gen
+echo LANG=en_US.UTF-8 &gt; /etc/locale.conf
+</code></pre>
+
+<p>####コンソールフォントとキーマップ</p>
+
+<pre><code class="ruby:">nano /etc/vconsole.conf
+</code></pre>
+
+<p>以下を追記</p>
+
+<pre><code class="ruby:console.conf">KEYMAP=jp106
+FONT=lat9w-16
+</code></pre>
+
+<p>####タイムゾーンとハードウェアクロック<br>
+タイムゾーンの設定</p>
+
+<pre><code class="ruby:">ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+</code></pre>
+
+<p>ハードウェアクロックの設定</p>
+
+<pre><code class="ruby:">hwclock --systohc --utc
+</code></pre>
+
+<p>####ホスト名</p>
+
+<pre><code class="ruby:">echo ホスト名 &gt; /etc/hostname
+</code></pre>
+
+<p>同じホスト名を /etc/hosts に追加</p>
+
+<pre><code class="ruby:">nano /etc/hosts
+</code></pre>
+
+<pre><code class="ruby:hosts">#&lt;ip-address&gt; &lt;hostname.domain.org&gt; &lt;hostname&gt;
+127.0.0.1 localhost.localdomain localhost ホスト名
+::1   localhost.localdomain localhost ホスト名
+</code></pre>
+
+<p>####ネットワークとパスワード<br>
+今回ネットワークの設定は有線の動的IPにします。<br>
+固定IPの場合は<a href="https://wiki.archlinuxjp.org/index.php/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E8%A8%AD%E5%AE%9A#.E5.9B.BA.E5.AE.9A_IP_.E3.82.A2.E3.83.89.E3.83.AC.E3.82.B9">ネットワーク設定</a>を参照</p>
+
+<p>ネットワークの設定</p>
+
+<pre><code class="ruby:">systemctl enable dhcpcd
+</code></pre>
+
+<p>パスワードの設定</p>
+
+<pre><code class="ruby:">passwd
+</code></pre>
+
+<p>##GRUBのインストール</p>
+
+<p>GRUBはそれぞれのブート方式で違うので順番に書いていきます</p>
+
+<p>####BIOSブート</p>
+
+<pre><code class="ruby:">pacman -S os-prober grub
+grub-install --target=i386-pc --recheck /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+
+<p>####32bitUEFIブート</p>
+
+<pre><code class="ruby:">pacman -S grub dosfstools efibootmgr
+grub-install --target=i386-efi --efi-directory=/boot --bootloader-id=grub --recheck
+mkdir /boot/EFI/boot
+cp /boot/EFI/grub/grubia32.efi /boot/EFI/boot/bootia32.efi
+grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+
+<p>####64bitUEFIブート</p>
+
+<pre><code class="ruby:">pacman -S grub dosfstools efibootmgr
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub --recheck
+mkdir /boot/EFI/boot
+cp /boot/EFI/grub/grubx64.efi  /boot/EFI/boot/bootx64.efi
+grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+
+<p>GRUBのインストールが無事終わったらシステムから出て再起動</p>
+
+<pre><code class="ruby:">exit
+umount -R /mnt
+reboot
+</code></pre>
+
+<p>無事起動したら成功です。<br>
+お疲れ様でした！！</p>
+
+<p>##追記</p>
+
+<p>もしこれでインストールできないとき、ArchのブートUSBを使ってシステムに入る方法を記述しておきます。<br>
+この方法は結構色んなトラブルで使うのでもし起動できなくなってシステムをに入れなくなったらやってみてください</p>
+
+<p>Archiso起動後以下コマンド実行</p>
+
+<pre><code class="ruby:">mount /dev/sda3 /mnt
+mount /dev/sda1 /mnt/boot
+mount /dev/sda4 /mnt/home
+arch-chroot /mnt /bin/bash
+</code></pre>
+
+<p>※マウントはパーティションを分けてる場合全部やってください</p>
+
+I, [2018-08-19T10:38:29.374447 #9511]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+
+ary1 = []
+ary2 = []
+a.each do |t|
+  case s
+  when /aaa/
+      ary1 &lt;&lt; t
+  else
+      ary2 &lt;&lt; t
+  end
+end
+
+ary1 #=&gt; aaa
+ary2 #=&gt; bbb, ccc
+</code></pre>
+
+<p>長い・・・</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-19T10:38:29.637833 #9511]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+
+<span class="n">ary1</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+  <span class="k">case</span> <span class="n">s</span>
+  <span class="k">when</span> <span class="sr">/aaa/</span>
+      <span class="n">ary1</span> <span class="o">&lt;&lt;</span> <span class="n">t</span>
+  <span class="k">else</span>
+      <span class="n">ary2</span> <span class="o">&lt;&lt;</span> <span class="n">t</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">ary1</span> <span class="c1">#=&gt; aaa</span>
+<span class="n">ary2</span> <span class="c1">#=&gt; bbb, ccc</span>
+</pre></div>
+
+<p>&#38263;&#12356;&#12539;&#12539;&#12539;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-19T10:40:05.270889 #9511]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+
+ary1 = []
+ary2 = []
+a.each do |t|
+  case s
+  when /aaa/
+      ary1 &lt;&lt; t
+  else
+      ary2 &lt;&lt; t
+  end
+end
+
+ary1 #=&gt; aaa
+ary2 #=&gt; bbb, ccc
+</code></pre>
+
+<p>長い・・・</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-19T10:40:05.533514 #9511]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+
+<span class="n">ary1</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+  <span class="k">case</span> <span class="n">s</span>
+  <span class="k">when</span> <span class="sr">/aaa/</span>
+      <span class="n">ary1</span> <span class="o">&lt;&lt;</span> <span class="n">t</span>
+  <span class="k">else</span>
+      <span class="n">ary2</span> <span class="o">&lt;&lt;</span> <span class="n">t</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">ary1</span> <span class="c1">#=&gt; aaa</span>
+<span class="n">ary2</span> <span class="c1">#=&gt; bbb, ccc</span>
+</pre></div>
+
+<p>&#38263;&#12356;&#12539;&#12539;&#12539;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-19T10:40:26.400151 #9511]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+
+ary1 = []
+ary2 = []
+a.each do |t|
+  case s
+  when /aaa/
+      ary1 &lt;&lt; t
+  else
+      ary2 &lt;&lt; t
+  end
+end
+
+ary1 #=&gt; aaa
+ary2 #=&gt; bbb, ccc
+</code></pre>
+
+<p>長い・・・</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-19T10:40:26.661864 #9511]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+
+<span class="n">ary1</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+  <span class="k">case</span> <span class="n">s</span>
+  <span class="k">when</span> <span class="sr">/aaa/</span>
+      <span class="n">ary1</span> <span class="o">&lt;&lt;</span> <span class="n">t</span>
+  <span class="k">else</span>
+      <span class="n">ary2</span> <span class="o">&lt;&lt;</span> <span class="n">t</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">ary1</span> <span class="c1">#=&gt; aaa</span>
+<span class="n">ary2</span> <span class="c1">#=&gt; bbb, ccc</span>
+</pre></div>
+
+<p>&#38263;&#12356;&#12539;&#12539;&#12539;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-19T10:40:30.079570 #9511]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+
+ary1 = []
+ary2 = []
+a.each do |t|
+  case s
+  when /aaa/
+      ary1 &lt;&lt; t
+  else
+      ary2 &lt;&lt; t
+  end
+end
+
+ary1 #=&gt; aaa
+ary2 #=&gt; bbb, ccc
+</code></pre>
+
+<p>長い・・・</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-19T10:40:30.339846 #9511]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+
+<span class="n">ary1</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+  <span class="k">case</span> <span class="n">s</span>
+  <span class="k">when</span> <span class="sr">/aaa/</span>
+      <span class="n">ary1</span> <span class="o">&lt;&lt;</span> <span class="n">t</span>
+  <span class="k">else</span>
+      <span class="n">ary2</span> <span class="o">&lt;&lt;</span> <span class="n">t</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">ary1</span> <span class="c1">#=&gt; aaa</span>
+<span class="n">ary2</span> <span class="c1">#=&gt; bbb, ccc</span>
+</pre></div>
+
+<p>&#38263;&#12356;&#12539;&#12539;&#12539;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-19T10:41:24.892961 #9511]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+
+ary1 = []
+ary2 = []
+a.each do |t|
+  case s
+  when /aaa/
+      ary1 &lt;&lt; t
+  else
+      ary2 &lt;&lt; t
+  end
+end
+
+ary1 #=&gt; aaa
+ary2 #=&gt; bbb, ccc
+</code></pre>
+
+<p>長い・・・</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-19T10:41:25.154591 #9511]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+
+<span class="n">ary1</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+  <span class="k">case</span> <span class="n">s</span>
+  <span class="k">when</span> <span class="sr">/aaa/</span>
+      <span class="n">ary1</span> <span class="o">&lt;&lt;</span> <span class="n">t</span>
+  <span class="k">else</span>
+      <span class="n">ary2</span> <span class="o">&lt;&lt;</span> <span class="n">t</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">ary1</span> <span class="c1">#=&gt; aaa</span>
+<span class="n">ary2</span> <span class="c1">#=&gt; bbb, ccc</span>
+</pre></div>
+
+<p>&#38263;&#12356;&#12539;&#12539;&#12539;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-19T10:41:42.089393 #9511]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+
+ary1 = []
+ary2 = []
+a.each do |t|
+  case s
+  when /aaa/
+      ary1 &lt;&lt; t
+  else
+      ary2 &lt;&lt; t
+  end
+end
+
+ary1 #=&gt; aaa
+ary2 #=&gt; bbb, ccc
+</code></pre>
+
+<p>長い・・・</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-19T10:41:42.348993 #9511]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+
+<span class="n">ary1</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+  <span class="k">case</span> <span class="n">s</span>
+  <span class="k">when</span> <span class="sr">/aaa/</span>
+      <span class="n">ary1</span> <span class="o">&lt;&lt;</span> <span class="n">t</span>
+  <span class="k">else</span>
+      <span class="n">ary2</span> <span class="o">&lt;&lt;</span> <span class="n">t</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">ary1</span> <span class="c1">#=&gt; aaa</span>
+<span class="n">ary2</span> <span class="c1">#=&gt; bbb, ccc</span>
+</pre></div>
+
+<p>&#38263;&#12356;&#12539;&#12539;&#12539;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-19T10:45:13.913886 #9709]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+
+ary1 = []
+ary2 = []
+a.each do |t|
+  case s
+  when /aaa/
+      ary1 &lt;&lt; t
+  else
+      ary2 &lt;&lt; t
+  end
+end
+
+ary1 #=&gt; aaa
+ary2 #=&gt; bbb, ccc
+</code></pre>
+
+<p>長い・・・</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-19T10:45:14.177609 #9709]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+
+<span class="n">ary1</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+  <span class="k">case</span> <span class="n">s</span>
+  <span class="k">when</span> <span class="sr">/aaa/</span>
+      <span class="n">ary1</span> <span class="o">&lt;&lt;</span> <span class="n">t</span>
+  <span class="k">else</span>
+      <span class="n">ary2</span> <span class="o">&lt;&lt;</span> <span class="n">t</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">ary1</span> <span class="c1">#=&gt; aaa</span>
+<span class="n">ary2</span> <span class="c1">#=&gt; bbb, ccc</span>
+</pre></div>
+
+<p>&#38263;&#12356;&#12539;&#12539;&#12539;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-19T10:45:25.430999 #9709]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+
+ary1 = []
+ary2 = []
+a.each do |t|
+  case s
+  when /aaa/
+      ary1 &lt;&lt; t
+  else
+      ary2 &lt;&lt; t
+  end
+end
+
+ary1 #=&gt; aaa
+ary2 #=&gt; bbb, ccc
+</code></pre>
+
+<p>長い・・・</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-19T10:45:25.691040 #9709]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+
+<span class="n">ary1</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+  <span class="k">case</span> <span class="n">s</span>
+  <span class="k">when</span> <span class="sr">/aaa/</span>
+      <span class="n">ary1</span> <span class="o">&lt;&lt;</span> <span class="n">t</span>
+  <span class="k">else</span>
+      <span class="n">ary2</span> <span class="o">&lt;&lt;</span> <span class="n">t</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">ary1</span> <span class="c1">#=&gt; aaa</span>
+<span class="n">ary2</span> <span class="c1">#=&gt; bbb, ccc</span>
+</pre></div>
+
+<p>&#38263;&#12356;&#12539;&#12539;&#12539;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+
+I, [2018-08-19T10:46:51.505516 #9789]  INFO -- : <p>#前置き</p>
+
+<p>自分がArchをインストールした際詰まった箇所を見直すためと<br>
+自分自身とても詰まったブート方式の違いについて（64bitUEFI・32bitUEFI・BIOS）<br>
+これからArchLinuxをインストールする方の力に少しでも力に慣れたらと思い記事を書かせていただきました。</p>
+
+<p>本文はブート方式ごとの設定を記述しており、各項目ごとに64bitUEFI・32bitUEFI・BIOSの設定があります。<br>
+自分の環境にあったものを選択してください。</p>
+
+<p>初投稿で文章力もないので読みづらい文書となっていますがご了承ください</p>
+
+<p>ArchLinuxをインストールする際<a href="https://wiki.archlinuxjp.org/index.php/%E3%83%93%E3%82%AE%E3%83%8A%E3%83%BC%E3%82%BA%E3%82%AC%E3%82%A4%E3%83%89#.E6.9C.80.E6.96.B0.E3.81.AE.E3.82.A4.E3.83.B3.E3.82.B9.E3.83.88.E3.83.BC.E3.83.AB.E3.83.A1.E3.83.87.E3.82.A3.E3.82.A2.E3.82.92.E6.BA.96.E5.82.99.E3.81.99.E3.82.8B">Archの公式wiki</a>のビギナーズガイドが優秀なのでこちらを見ながらの作業をおすすめします。</p>
+
+<p>#インストールディスクの作成<br>
+インストールディスクはUSBで作るほうが色々便利なのでUSBでの作り方のみ記述します。<br>
+PCのブート方式によって作成手順が違うので自分のPCのブート方式をよく調べてから作業してください。</p>
+
+<p><a href="https://wiki.archlinuxjp.org/index.php/USB_%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%83%A1%E3%83%87%E3%82%A3%E3%82%A2">USBインストールガイド</a><br>
+####64bitUEFI・BIOSブート<br>
+・<a href="https://www.archlinux.org/download/" title="Arch Linux Downloads">Arch Linux Downloads</a>からisoの入手<br>
+・ddコマンドか<a href="http://rufus.akeo.ie/">Rufus</a>を使いisoファイルを書き込む</p>
+
+<p>※/dev/sdx1 ではなく /dev/sdx を使い。x はあなたの使うデバイスに置き換える。</p>
+
+<pre><code class="ruby:ddコマンド">dd bs=4M if=/path/to/archlinux.iso of=/dev/sdx &amp;&amp; sync
+</code></pre>
+
+<p>####32bitUEFIブート<br>
+・<a href="https://www.archlinux.org/download/" title="Arch Linux Downloads">Arch Linux Downloads</a>からisoの入手<br>
+・<a href="http://rufus.akeo.ie/">Rufus</a>を使いisoファイルを書き込む　※USBラベルは「ARCHISO」に設定しておく<br>
+・<a href="https://github.com/jfwells/linux-asus-t100ta/blob/master/boot/bootia32.efi">bootia32</a>をダウンロードする<br>
+・書き込んだUSBのEFIディレクトリを開き、ダウンロードしたbootia32を配置<br>
+・/boot/grub/grub.cfgを作成し以下を記述　※ディレクトリがない場合は作成</p>
+
+<pre><code class="ruby:grub.cfg">menuentry &#39;Arch Linux i686&#39;{
+echo &#39;Loading Linux core repo kernel ...&#39;
+linux /arch/boot/i686/vmlinuz noefi nomodeset archisobasedir=arch archisolabel=ARCHISO
+echo &#39;Loading initial ramdisk ...&#39;
+initrd /arch/boot/i686/archiso.img
+}
+menuentry &#39;Arch Linux x86_64&#39;{
+echo &#39;Loading Linux core repo kernel ...&#39;
+linux /arch/boot/x86_64/vmlinuz noefi nomodeset archisobasedir=arch archisolabel=ARCHISO
+echo &#39;Loading initial ramdisk ...&#39;
+initrd /arch/boot/x86_64/archiso.img
+}
+</code></pre>
+
+<p>#インストール作業<br>
+USBの準備ができたらいよいよインストールに入ります。現在2015年10月29日に記事を作成していますが<br>
+年数が経つとインストール方法が変わったりする場合があるので<a href="https://wiki.archlinuxjp.org/index.php/%E3%83%93%E3%82%AE%E3%83%8A%E3%83%BC%E3%82%BA%E3%82%AC%E3%82%A4%E3%83%89">Archインストールガイド</a>をよくみながら作業をしてください。</p>
+
+<p>起動画面にてどちらのアーキテクチャか選択できるので、自分のPCにあったほうを選択してください。<br>
+Boot Arch Linux (x86_64)　<br>
+Boot Arch Linux (i386)　  ※32bitUEFIはこちらを選択</p>
+
+<p>##キーボードレイアウトの設定<br>
+Archが立ち上がったらデフォルトのキーレイアウトがUSになっているので変更</p>
+
+<pre><code class="ruby:">loadkeys jp106
+</code></pre>
+
+<p>##インターネットの設定<br>
+無線</p>
+
+<pre><code class="ruby:">wifi-menu
+</code></pre>
+
+<p>有線<br>
+自動接続</p>
+
+<p>※固定IPを設定する場合は下記参照<br>
+<a href="https://wiki.archlinuxjp.org/index.php/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E8%A8%AD%E5%AE%9A#.E5.9B.BA.E5.AE.9A_IP_.E3.82.A2.E3.83.89.E3.83.AC.E3.82.B9">ネットワーク設定</a></p>
+
+<p>##システムクロックの更新<br>
+systemd-timesyncd を使ってシステムクロックを設定</p>
+
+<pre><code class="ruby:">timedatectl set-ntp true
+</code></pre>
+
+<pre><code class="ruby:サービスの状態確認">timedatectl status
+</code></pre>
+
+<p>##パーティショニング<br>
+パーティニングにおいて必須なのは下記の二つ<br>
+・ルートディレクトリ / のパーティション。<br>
+・UEFI が有効になっている場合、EFI システムパーティション。<br>
+※詳細は<a href="https://wiki.archlinux.jp/index.php/%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0">パーティショニング</a>参照</p>
+
+<p>今回の構成<br>
+/dev/sda1  ・・・  /boot　<br>
+/dev/sda2  ・・・ swap　　<br>
+/dev/sda3 ・・・ /root　　<br>
+/dev/sda4 ・・・ /home　　</p>
+
+<p>※UEFIブートの場合、EFI System Partitionというものを作成しなければいけないのだが今回は/bootと統合して作成する</p>
+
+<p>####現在のパーティション確認</p>
+
+<pre><code class="ruby:">fdisk -l
+</code></pre>
+
+<p>####起動モードの確認<br>
+UEFIブートで立ち上がっているか確認できます。</p>
+
+<pre><code class="ruby:">ls /sys/firmware/efi/efivars
+</code></pre>
+
+<p>※ディレクトリが存在しない場合、BIOS (または CSM) モードで起動しています。</p>
+
+<p>####パーティション作成<br>
+partedの起動</p>
+
+<pre><code class="ruby:">parted /dev/sda
+</code></pre>
+
+<pre><code class="ruby:BIOSブートの場合">(parted)mklabel msdos
+(parted)mkpart primary ext4 1MiB 100MiB
+(parted)mkpart primary linux-swap 100MiB  2GiB
+(parted)mkpart primary ext4 2GiB 10GiB
+(parted)mkpart primary ext4 10GiB 100% 
+(parted)q
+</code></pre>
+
+<pre><code class="ruby:UEFIブートの場合">(parted)mklabel gpt
+(parted)mkpart ESP fat32 1MiB 513MiB
+(parted)mkpart primary linux-swap 513MiB  2.5GiB
+(parted)mkpart primary ext4 2.5GiB 10GiB
+(parted)mkpart primary ext4 10GiB 100%
+(parted)q 
+</code></pre>
+
+<p>※各パーティションのサイズは自分の環境に置き換えてください</p>
+
+<p>作成後、パーティションを確認したい場合は下記コマンド実行</p>
+
+<pre><code class="ruby:">fdisk -l
+</code></pre>
+
+<p>##ファイルシステム作成<br>
+ファイルシステムとスワップ領域の作成を行う</p>
+
+<pre><code class="ruby:BIOSブートの場合">mkfs.ext4 /dev/sda1
+mkswap /dev/sda2
+swapon /dev/sda2
+mkfs.ext4 /dev/sda3
+mkfs.ext4 /dev/sda4
+</code></pre>
+
+<p>UEFIの場合bootディレクトリはfat32で作成する</p>
+
+<pre><code class="ruby:UEFIブートの場合">mkfs.vfat -F32 /dev/sda1
+mkswap /dev/sda2
+swapon /dev/sda2
+mkfs.ext4 /dev/sda3
+mkfs.ext4 /dev/sda4
+</code></pre>
+
+<p>##インストール</p>
+
+<p>ベースシステムのインストールになります。<br>
+マウントしないとインストールができないので以下を実行</p>
+
+<p>####マウント<br>
+<code>ruby:<br>
+mount /dev/sda3 /mnt<br>
+mkdir /mnt/boot<br>
+mkdir /mnt/home<br>
+mount /dev/sda1 /mnt/boot<br>
+mount /dev/sda4 /mnt/home<br>
+</code></p>
+
+<p>####ミラーリスト選択</p>
+
+<pre><code class="ruby:">nano /etc/pacman.d/mirrorlist
+</code></pre>
+
+<pre><code class="ruby:">##
+## Arch Linux repository mirrorlist
+## Sorted by mirror score from mirror status page
+## Generated on YYYY-MM-DD
+##
+#japan
+Server = http://ftp.jaist.ac.jp/pub/Linux/ArchLinux/$repo/os/$arch
+...
+</code></pre>
+
+<p>・Ctrl+W で「japan」と入力しURLを検索<br>
+・Ctrl+K で Server 行を切り取り。<br>
+・PageUp キーで上にスクロール。<br>
+・Ctrl+U でリストの一番上にペースト。<br>
+・Ctrl+X で終了、保存するか聞かれたら、Y を押し Enter で上書き保存。</p>
+
+<p>####ベースシステムインストール</p>
+
+<pre><code class="ruby:">pacstrap /mnt base base-devel
+</code></pre>
+
+<p>####fstab作成</p>
+
+<pre><code class="ruby:">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+</code></pre>
+
+<p>##システムの設定<br>
+インストールが完了したらいよいよそのシステムに入ります。</p>
+
+<pre><code class="ruby:">arch-chroot /mnt /bin/bash
+</code></pre>
+
+<p>####ロケールの設定<br>
+locale.gen ファイルのコメントアウトを解除します</p>
+
+<pre><code class="rudy:">nano /etc/locale.gen
+</code></pre>
+
+<pre><code class="rudy:locale.gen">...
+#en_SG ISO-8859-1
+en_US.UTF-8 UTF-8
+#en_US ISO-8859-1
+...
+#ja_JP.EUC-JP EUC-JP
+ja_JP.UTF-8 UTF-8
+#ka_GE.UTF-8 UTF-8
+...
+</code></pre>
+
+<p>解除後、以下を実行</p>
+
+<pre><code class="ruby:">locale-gen
+echo LANG=en_US.UTF-8 &gt; /etc/locale.conf
+</code></pre>
+
+<p>####コンソールフォントとキーマップ</p>
+
+<pre><code class="ruby:">nano /etc/vconsole.conf
+</code></pre>
+
+<p>以下を追記</p>
+
+<pre><code class="ruby:console.conf">KEYMAP=jp106
+FONT=lat9w-16
+</code></pre>
+
+<p>####タイムゾーンとハードウェアクロック<br>
+タイムゾーンの設定</p>
+
+<pre><code class="ruby:">ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+</code></pre>
+
+<p>ハードウェアクロックの設定</p>
+
+<pre><code class="ruby:">hwclock --systohc --utc
+</code></pre>
+
+<p>####ホスト名</p>
+
+<pre><code class="ruby:">echo ホスト名 &gt; /etc/hostname
+</code></pre>
+
+<p>同じホスト名を /etc/hosts に追加</p>
+
+<pre><code class="ruby:">nano /etc/hosts
+</code></pre>
+
+<pre><code class="ruby:hosts">#&lt;ip-address&gt; &lt;hostname.domain.org&gt; &lt;hostname&gt;
+127.0.0.1 localhost.localdomain localhost ホスト名
+::1   localhost.localdomain localhost ホスト名
+</code></pre>
+
+<p>####ネットワークとパスワード<br>
+今回ネットワークの設定は有線の動的IPにします。<br>
+固定IPの場合は<a href="https://wiki.archlinuxjp.org/index.php/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E8%A8%AD%E5%AE%9A#.E5.9B.BA.E5.AE.9A_IP_.E3.82.A2.E3.83.89.E3.83.AC.E3.82.B9">ネットワーク設定</a>を参照</p>
+
+<p>ネットワークの設定</p>
+
+<pre><code class="ruby:">systemctl enable dhcpcd
+</code></pre>
+
+<p>パスワードの設定</p>
+
+<pre><code class="ruby:">passwd
+</code></pre>
+
+<p>##GRUBのインストール</p>
+
+<p>GRUBはそれぞれのブート方式で違うので順番に書いていきます</p>
+
+<p>####BIOSブート</p>
+
+<pre><code class="ruby:">pacman -S os-prober grub
+grub-install --target=i386-pc --recheck /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+
+<p>####32bitUEFIブート</p>
+
+<pre><code class="ruby:">pacman -S grub dosfstools efibootmgr
+grub-install --target=i386-efi --efi-directory=/boot --bootloader-id=grub --recheck
+mkdir /boot/EFI/boot
+cp /boot/EFI/grub/grubia32.efi /boot/EFI/boot/bootia32.efi
+grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+
+<p>####64bitUEFIブート</p>
+
+<pre><code class="ruby:">pacman -S grub dosfstools efibootmgr
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub --recheck
+mkdir /boot/EFI/boot
+cp /boot/EFI/grub/grubx64.efi  /boot/EFI/boot/bootx64.efi
+grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+
+<p>GRUBのインストールが無事終わったらシステムから出て再起動</p>
+
+<pre><code class="ruby:">exit
+umount -R /mnt
+reboot
+</code></pre>
+
+<p>無事起動したら成功です。<br>
+お疲れ様でした！！</p>
+
+<p>##追記</p>
+
+<p>もしこれでインストールできないとき、ArchのブートUSBを使ってシステムに入る方法を記述しておきます。<br>
+この方法は結構色んなトラブルで使うのでもし起動できなくなってシステムをに入れなくなったらやってみてください</p>
+
+<p>Archiso起動後以下コマンド実行</p>
+
+<pre><code class="ruby:">mount /dev/sda3 /mnt
+mount /dev/sda1 /mnt/boot
+mount /dev/sda4 /mnt/home
+arch-chroot /mnt /bin/bash
+</code></pre>
+
+<p>※マウントはパーティションを分けてる場合全部やってください</p>
+
+I, [2018-08-19T10:47:03.368363 #9789]  INFO -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>配列の代入方法を備忘録として記述</p>
+
+<h4>特定の値の抽出</h4>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+
+ary1 = []
+ary2 = []
+a.each do |t|
+  case s
+  when /aaa/
+      ary1 &lt;&lt; t
+  else
+      ary2 &lt;&lt; t
+  end
+end
+
+ary1 #=&gt; aaa
+ary2 #=&gt; bbb, ccc
+</code></pre>
+
+<p>長い・・・</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1 = a.select { |t| t =~ /aaa/ }
+ary2 = a - ary1
+</code></pre>
+
+<p>よくなった</p>
+
+<pre><code class="Ruby">a = [&quot;aaa&quot;, &quot;bbb&quot;, &quot;ccc&quot;]
+ary1,ary2 = a.partition { |t| t =~ /aaa/ }
+
+</code></pre>
+
+<p>よき</p>
+
+W, [2018-08-19T10:47:03.628510 #9789]  WARN -- : <h1>Ruby Array</h1>
+
+<hr>
+
+<p>&#37197;&#21015;&#12398;&#20195;&#20837;&#26041;&#27861;&#12434;&#20633;&#24536;&#37682;&#12392;&#12375;&#12390;&#35352;&#36848;</p>
+
+<h4>&#29305;&#23450;&#12398;&#20516;&#12398;&#25277;&#20986;</h4>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+
+<span class="n">ary1</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+  <span class="k">case</span> <span class="n">s</span>
+  <span class="k">when</span> <span class="sr">/aaa/</span>
+      <span class="n">ary1</span> <span class="o">&lt;&lt;</span> <span class="n">t</span>
+  <span class="k">else</span>
+      <span class="n">ary2</span> <span class="o">&lt;&lt;</span> <span class="n">t</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">ary1</span> <span class="c1">#=&gt; aaa</span>
+<span class="n">ary2</span> <span class="c1">#=&gt; bbb, ccc</span>
+</pre></div>
+
+<p>&#38263;&#12356;&#12539;&#12539;&#12539;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+<span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">ary1</span>
+</pre></div>
+
+<p>&#12424;&#12367;&#12394;&#12387;&#12383;</p>
+
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">[</span><span class="s2">"aaa"</span><span class="p">,</span> <span class="s2">"bbb"</span><span class="p">,</span> <span class="s2">"ccc"</span><span class="o">]</span>
+<span class="n">ary1</span><span class="p">,</span><span class="n">ary2</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">partition</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span> <span class="o">=~</span> <span class="sr">/aaa/</span> <span class="p">}</span>
+</pre></div>
+
+<p>&#12424;&#12365;</p>
+

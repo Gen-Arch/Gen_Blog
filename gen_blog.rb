@@ -8,6 +8,7 @@ require "date"
 
 class GenApp < Sinatra::Base
     register Sinatra::Glorify
+    register Sinatra::Reloader
     include ApplicationHelper
 
     before do
@@ -15,7 +16,8 @@ class GenApp < Sinatra::Base
     end
     
     get '/' do
-        @txt = File.open("#{File.dirname(__FILE__)}/md/Arch_install.md", "rb").read
+        @md_page = "Arch_install"
+        @txt = File.open("#{File.dirname(__FILE__)}/md/#{@md_page}.md", "rb").read
         @md = markdown(@txt)
         @title = "Ruby配列あれこれ"
         @data = Date.today
