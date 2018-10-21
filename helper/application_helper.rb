@@ -8,7 +8,8 @@ module ApplicationHelper
     class HtmlWithRouge < Redcarpet::Render::HTML
         include Rouge::Plugins::Redcarpet
     end
-    def markdown(text)
+
+    def self.markdown(text)
         render = HtmlWithRouge.new
         md = Redcarpet::Markdown.new(render,
             tables: true,
@@ -21,5 +22,4 @@ module ApplicationHelper
         )
         return md.render(text)
     end
-    module_function :markdown
   end
