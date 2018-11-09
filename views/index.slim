@@ -1,0 +1,43 @@
+.container-fluid
+  .row
+    .col-2
+      ul.list-group
+        li.list-group-item Cras justo odio
+        li.list-group-item Dapibus ac facilisis in
+        li.list-group-item Morbi leo risus
+        li.list-group-item Porta ac consectetur ac
+    .col-7
+      .blog-main
+        .card
+          .card-header 
+            h2.blog-post-title #{@title}
+            p.blog-post-meta #{@data} update
+          .card-body
+            == @md
+      h3.pb-3.mb-4.font-italic.border-bottom
+
+    .col
+      .blog-sidebar
+        .bg-light.rounded
+          img.rounded-circle src="image/erio.jpg" alt="..." width="60" height="60"
+          a href="https://twitter.com/Gen_Arch"
+            h4.font-italic Gen@Gen_Arch
+          p.mb-0
+            |ネットワークエンジニア3年目
+            br
+            |ArchLinuxが好きで職場のPCもArchにしたいと常々思っている
+            br
+            |現在Ruby/Python勉強中
+
+        .p-3
+          h4.font-italic Elsewhere
+          ol.list-unstyled
+            li
+              a href="https://github.com/Gen-Arch" GitHub
+            li
+              a href="https://twitter.com/" Twitter
+            li
+              a href="https://qiita.com/Gen_Arch" Qiita
+
+footer.container
+  p &copy; Company 2017-2018

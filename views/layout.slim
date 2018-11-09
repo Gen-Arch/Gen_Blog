@@ -1,0 +1,47 @@
+doctype html
+html lang="en"
+  head
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    meta name="description" content=""
+    meta name="author" content=""
+
+    title Gen_BLOG
+    link href="css/bootstrap.min.css" rel="stylesheet"
+    link rel="stylesheet" href="css/pygments.css" type="text/css"
+
+  nav.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
+    a.navbar-brand href="/" GEN-BLOG
+    button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"
+      span.navbar-toggler-icon
+    .collapse.navbar-collapse#navbarsExampleDefault
+      ul.navbar-nav.mr-auto
+        li.nav-item.active
+          a.nav-link href="/" Home
+          span.sr-only" (current)
+        li.nav-item.active
+          a.nav-link href="#" Link
+        li.nav-item
+          a.nav-link href="/" disabel
+        li.nav-item.dropdown.active
+          a.nav-link.dropdown-toggle href="/" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" Develop Tool
+          .dropdown-menu aria-labelledby="dropdown01"
+            a.dropdown-item href="http://gen-server.wjg.jp:3000" Gogs
+            a.dropdown-item href="https://cy-worldteam.slack.com" Slack
+
+      form.form-inline.my-2.my-lg-0
+        input.form-control.mr-sm-2 type="text" placeholder="Search" aria-label="Search">
+        button.btn.btn-outline-success.mr-sm-2 type="submit" Search
+        a.btn.btn-primary.mr-sm-0 href="/create" role="button" Create Page
+  body
+    .jumbotron
+      .container
+        h1.display-3 GEN-BLOG
+        h2.display-4 ～日々の備忘録～
+        p Genの学んだ知識をつらつら書いてゆくサイト
+    main role="main"
+      == yield
+    script src="js/bootstrap.min.js"
+    script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"
+    script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"
+    script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"
