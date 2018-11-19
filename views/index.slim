@@ -8,12 +8,13 @@
         li.list-group-item Porta ac consectetur ac
     .col-7
       .blog-main
-        .card
-          .card-header 
-            h2.blog-post-title #{@title}
-            p.blog-post-meta #{@data} update
-          .card-body
-            == @md
+        - @md.each do |title, info|
+          .card
+            .card-header 
+              h2.blog-post-title #{title}
+              p.blog-post-meta #{info[:data]} update
+            .card-body
+              == info[:md]
       h3.pb-3.mb-4.font-italic.border-bottom
 
     .col

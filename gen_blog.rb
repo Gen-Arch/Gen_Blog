@@ -14,11 +14,14 @@ class GenApp < Sinatra::Base
   $logger = Logger.new("#{File.dirname(__FILE__)}/log/logger.log")
 
   get '/' do
-    @txt = IO.read("#{__dir__}/md/Arch_install.md")
-    @txt.force_encoding("utf-8")
-    @md = ApplicationHelper.markdown(@txt)
-    @title = "Ruby配列あれこれ"
-    @data = Date.today
+    @md = Hash.new
+    Dir.glob("#{__dir__}/md/*.md").each do |file|
+      @title = File.basename(file)
+      @md[@title] = (@md[@title] || {}).merge(:data => Date.today)
+      @txt = IO.read(file)
+      @txt.force_encoding("utf-8")
+      @md[@title] = (@md[@title] || {}).merge(:md => ApplicationHelper.markdown(@txt))
+    end
     slim :index
   end
 
