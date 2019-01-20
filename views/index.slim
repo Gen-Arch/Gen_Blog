@@ -8,6 +8,14 @@
         li.list-group-item Porta ac consectetur ac
     .col-7
       .blog-main
+        .card
+          .card-header 
+            h2.blog-post-title chart
+            p.blog-post-meta update
+          .card-body
+            #lineChart style="width: 800px; height: 200px"
+            #area class="epoch category10" style="height: 200px; width: 400px;"  
+        br
         - @md.each do |title, info|
           .card
             .card-header 
@@ -15,6 +23,8 @@
               p.blog-post-meta #{info[:data]} update
             .card-body
               == info[:md]
+
+          br
       h3.pb-3.mb-4.font-italic.border-bottom
 
     .col
@@ -42,3 +52,15 @@
 
 footer.container
   p &copy; Company 2017-2018
+
+javascript:
+  var data = [
+  { label: 'Layer 1', values: [ {x: 0, y: 0}, {x: 1, y: 1}, {x: 2, y: 2} ] },
+  { label: 'Layer 2', values: [ {x: 0, y: 0}, {x: 1, y: 1}, {x: 2, y: 4} ] }
+  ];
+  var areaChartInstance = $('#area').epoch({
+    type: 'area',
+    data: data,
+    axes: ['left', 'right', 'bottom']
+  });
+

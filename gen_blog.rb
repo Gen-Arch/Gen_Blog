@@ -1,27 +1,58 @@
-require 'sinatra/reloader'
-require 'sinatra/base'
 require 'slim'
-require 'erb'
-require 'logger'
-require "date"
+require 'sinatra/base'
 
-$: << File.join(__dir__, "helper")
-require "application_helper"
+require_relative "lib/application_helper"
 
 class GenApp < Sinatra::Base
-  register Sinatra::Reloader
+  configure :production do
+    set :server, :puma
+  end
 
-  $logger = Logger.new("#{File.dirname(__FILE__)}/log/logger.log")
+  configure :development do
+    Bundler.setup(:default, :development)
+    require 'sinatra/reloader'
+    register Sinatra::Reloader
+  end
+
+  configure do
+    url = (ENV["ELASTICSEARCH_URL"] || "http://localhost:9200")
+    @client = Elasticsearch::Client.new url: url, log: true
+    @index  = "gen_blog"
+  end
+
+  before do
+    request.script_name = "/gen_blog"
+  end
+
+  helpers do
+    def arg_factory(type, **hash)
+      #elastic gem 変数調整用
+      default = {index: @index, type: type}
+      default.merge(hash) if hash
+    end
+
+    def jbuilder(query)
+      #elastic gem method => search
+      #json変数 調整用
+      raise unless query.is_a?(Hash)
+      raise unless query.size == 1
+
+      key, val = query.first
+      {query: {match: {key.to_sym => {query: val, operator: "and"}}}}
+    rescue => err
+      raise ArgumentError, "jbuilder Error!!"
+    end
+
+    def err_json!(req, err=nil)
+      #err status conversion => json
+      req.merge({result: err}).to_json
+    end
+  end
 
   get '/' do
-    @md = Hash.new
-    Dir.glob("#{__dir__}/md/*.md").each do |file|
-      @title = File.basename(file)
-      @md[@title] = (@md[@title] || {}).merge(:data => Date.today)
-      @txt = IO.read(file)
-      @txt.force_encoding("utf-8")
-      @md[@title] = (@md[@title] || {}).merge(:md => ApplicationHelper.markdown(@txt))
-    end
+    data = client.search(arg_factory("blog"))
+    md   = ApplicationHelper.markdown(data[:txt])
+
     slim :index
   end
 
@@ -32,8 +63,9 @@ class GenApp < Sinatra::Base
   get '/highlight.css' do
     #Rouge css
     headers 'Content-Type' => 'text/css'
-    Rouge::Themes::Github.render(scope: '.highlight')
+    ApplicationHelper.get_css
   end
+
+  run! if app_file == $0
 end
 
-GenApp.run!

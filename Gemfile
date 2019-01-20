@@ -6,7 +6,9 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 # gem "rails"
 gem "sinatra"
-gem "sinatra-contrib"
+gem "sinatra-contrib", :group => %i(depelopment test)
+gem "puma"
 gem "redcarpet"
 gem "rouge"
 gem "slim"
+gem "elasticsearch"
